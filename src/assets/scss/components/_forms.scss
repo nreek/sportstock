@@ -1,0 +1,170 @@
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &.vertical {
+        flex-direction: column;
+        align-items: flex-start;
+
+        label { margin-bottom: 5px; }
+    }
+
+    .icon { 
+        height: 23px; 
+        margin-right: 10px;
+    }
+
+    input, .form-control { max-width: none !important; }
+}
+
+input[type=text], input[type=password], input[type=phone], input[type=email], select, .form-control-clean, .form-control {
+    width: 100%;
+    max-width: 440px;
+    color: var(--text__color);
+    border-radius: 0;
+    height: auto;
+
+    &[disabled] { color: gray; }
+
+    &.large {
+        max-width: 100%;
+        font-size: 20px;
+        padding: 7px 0;
+    }
+}
+
+input[type=text], input[type=password], input[type=phone], input[type=email], select, .form-control-clean {
+    border: none;
+    border-bottom: 1px solid rgba(gray, 0.2);
+    background: transparent;
+    max-width: 300px;
+    font-size: 14px;
+}
+
+input[type=text], input[type=password], input[type=phone], input[type=email], select, .form-control {
+    &.form-control{
+        border: 1px solid #4F3067;
+        background-color: var(--c-input__bg);
+        padding: 7px 20px;
+        max-width: 420px;
+        position: relative;
+        overflow: hidden;
+    }
+}
+
+.form-control input {
+    appearance: none;
+    width: 105px;
+    border: none !important;
+}
+
+
+.form-control, .form-control-clean {
+    .input__append, .input__prepend {
+        float: left;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+
+        @include mobile {
+            float: right;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            background: var(--c-input__bg);
+            padding: 0 10px;
+        }
+
+        a:not(.btn){ 
+            font-size: 12px; 
+            font-weight: bold; 
+            text-decoration: underline; 
+        }
+
+        img { margin-right: 10px; }
+    }
+
+    .input__append {
+        float: right;
+    }
+}
+
+.coin-checkbox {
+    input[type=checkbox] {
+        display: none;
+
+        &:checked + label:before { content: '✓' }  
+    }
+
+    label {
+        position: relative;
+        padding-left: 25px;
+        font-size: 14px;
+
+        &:before {
+            content: '';
+            border: 1px solid var(--text__color);
+            border-radius: 5px;
+            width: 19px;
+            height: 19px;
+            left: 0;
+            top: 0;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.coin-toggle {
+    .toggle-switch {
+        display: inline-block;
+        background: #331d56;
+        border-radius: 16px;
+        width: 58px;
+        height: 26px;
+        position: relative;
+        vertical-align: middle;
+        transition: background 0.25s;
+        &:before,
+        &:after {
+            content: "";
+        }
+        &:before {
+            display: block;
+            background: linear-gradient(to bottom, #fff 0%,#eee 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.25);
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: left 0.25s;
+        }
+        .toggle:hover &:before {
+            background: linear-gradient(to bottom, #fff 0%,#fff 100%);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.5);
+        }
+    }
+
+    .toggle-checkbox:checked + .toggle-switch {
+        background: $c_secondary;
+        &:before {
+            left: 34px;
+        }
+    }
+
+    .toggle-checkbox {
+        position: absolute;
+        visibility: hidden;
+    }
+}
+
+.error {
+    font-size: .7em;
+    color: red;
+}

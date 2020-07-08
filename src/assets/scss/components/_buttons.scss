@@ -1,0 +1,67 @@
+.btn {
+    text-align: center;
+    color: white;
+    padding: 10px 40px;
+    font-size: 15px;
+    font-weight: bold;
+
+    &[disabled=disabled] {
+        opacity: 0.7 !important; 
+    }
+
+    
+    &.btn-block {
+        display: block;
+    }
+
+    &.btn-sm {
+        border-radius: 3px;
+        padding: 4px 10px;
+        font-size: 10px;
+        color: white !important;
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+
+    &.btn-lg {
+        border-radius: 5px;
+    }
+
+    &.btn-outline {
+        background-color: transparent !important;
+    }
+
+    @each $name, $color in $c_extra-colors {
+        &.btn-#{$name} {
+            background-color: $color;
+            color: white !important;
+
+            &.btn-outline {
+                border: 1px solid $color;
+                color: $color !important;
+            }
+        }
+    }
+}
+
+.pills {
+    list-style: none;
+    padding: 0;
+    display: flex;
+
+    li a{
+        margin-right: 15px;
+        border-radius: 10px;
+        background: var(--pills__bg);
+        padding: 5px 30px;
+        font-size: 14px;
+        min-width: 120px;
+        display: block;
+        text-align: center;
+
+        &.active {
+            background: var(--c_secondary);
+        }
+    }
+
+}

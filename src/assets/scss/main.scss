@@ -1,0 +1,34 @@
+@import 'settings/bootstrap';
+
+@import 'settings/mixins';
+@import 'settings/variables';
+@import 'settings/typography';
+@import 'settings/atoms';
+
+@import 'components/forms'; 
+@import 'components/containers'; 
+@import 'components/buttons'; 
+@import 'components/tables'; 
+
+#app {
+    background: $c_primary;
+    min-height: 100vh;
+    font-family: 'Avenir';
+
+    &.light {
+        background: #f9f7fb;
+    }
+    
+    &, a { color: var(--text__color); }
+
+    a:hover { color: $c_highlight; }
+}
+
+.container {
+    max-width: 1440px;
+}
+
+.icon {
+    transition: all .6s;
+    filter: var(--icon__filter);
+}
