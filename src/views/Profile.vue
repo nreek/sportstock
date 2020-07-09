@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card__header justify-content-start always-horizontal">
                         <img src="../assets/icons/person.png" width="24" class="icon mr-2" alt="">
-                        <h6 class="text-secondary-light mb-0">menders@altcoinlab.io</h6>
+                        <h6 class="op-50 mb-0">menders@altcoinlab.io</h6>
                     </div>
                     <div class="card__body mt-5 d-flex">
                         <div>
@@ -18,7 +18,7 @@
                             <span>•••••••••••••••••••</span>
                         </div>
                         <div class="align-items-center d-flex ml-4">
-                            <img src="../assets/icons/edit.png" width="17" class="mr-2" alt="">
+                            <img src="../assets/icons/edit.png" width="17" class="mr-2 icon" alt="">
                             <router-link to="/profile/change-password" class="">Change Password</router-link>
                         </div>
                     </div>
@@ -53,13 +53,15 @@
 
                         <div class="google-authenticator mt-3">
                             <span class="fw-bold">Google Authenticator</span>
-                            <small class=" google-authenticator__text">Use an app to generate time-sensitive authentication codes on your phone</small>
-                            <div>
-                                <div class="badge mb-2">Recomended</div>
-                                <label for="ga-active" class="coin-toggle ml-3">
-                                    <input id="ga-active" class="toggle-checkbox" type="checkbox">
-                                    <div class="toggle-switch"></div>
-                                </label>
+                            <div class="flex mt-2">
+                                <small class="flex-1">Use an app to generate time-sensitive authentication codes on your phone</small>
+                                <div class="">
+                                    <div class="badge mb-2">Recomended</div>
+                                    <label for="ga-active" class="coin-toggle ml-3">
+                                        <input id="ga-active" class="toggle-checkbox" type="checkbox">
+                                        <div class="toggle-switch"></div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,6 +113,41 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-12 my-4">
+                <div class="card">
+                    <div class="card__header justify-content-start always-horizontal">
+                        <span>Logs</span>
+                    </div>
+
+                    <div class="card__body">
+                        <div class="table-responsive mt-4">
+                            <table>
+                                <thead>
+                                    <tr class="uppercase text-secondary-light">
+                                        <th>IP</th>
+                                        <th>Timestamp</th>
+                                        <th>Browser</th>
+                                        <th>Device</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  v-for="i of [1,3,4,5,6]" :key="i">
+                                        <td>20{{i}}.1{{i}}1.18{{i}}</td>
+                                        <td>2020-06-0{{i}} 1{{i}}:34:0{{i}}</td>
+                                        <td>Safari</td>
+                                        <td>iPhone</td>
+                                        <td>
+                                            <a href="#"><i class="fas fa-ban"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -131,8 +168,6 @@ export default {
     @import '@/assets/scss/settings/_mixins.scss';
 
     .profile {
-        font-size: 14px;
-       
         .google-authenticator {
             border: 1px solid #DE272E;
             border-radius: 9px;
@@ -156,15 +191,6 @@ export default {
             @include mobile {
                 .coin-toggle {
                     margin-left: 0 !important;
-                }
-            }
-
-            &__text {
-                margin-right: 15px;
-                margin-left: 15px;
-
-                @include mobile{
-                    margin: 10px 0;
                 }
             }
         }
