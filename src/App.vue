@@ -7,8 +7,6 @@
 </template>
 
 <script>
-
-
 import Default from '@/layouts/Default';
 import Auth from '@/layouts/Auth';
 
