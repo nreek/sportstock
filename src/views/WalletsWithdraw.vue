@@ -7,8 +7,8 @@
 
         <div class="card large">
             <div class="card__header">
-                <router-link to="/wallets" class="fw-bold">
-                    <img src="../assets/icons/caret.png" class="icon" width="8" alt="">
+                <router-link to="/wallets" class="fw-bold flex items-center">
+                    <img src="../assets/icons/caret.png" class="icon mr-2" width="8" alt="">
                     Go back
                 </router-link>
 
@@ -36,10 +36,10 @@
                         <div class="form-control">
                             <div class="pull-left f-direction-row-reverse">
                                 <input type="text" name="amount" style="width:160px" @blur="createWithdrawRequest(); getFee()" v-model="form.amount"> 
-                                <span class="text-secondary-light">{{ $route.params.coin }}</span>
+                                <span class="text-green">{{ $route.params.coin }}</span>
                             </div>
                             <div class="input__append">
-                                <a href="javascript:void(0);" class="text-secondary-light" @click="useTotalAvailable">Use total available</a>
+                                <a href="javascript:void(0);" class="text-green" @click="useTotalAvailable">Use total available</a>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="col-md-12">
-                    <a href="#" class="btn btn-block btn-secondary">Withdraw</a>
+                    <a href="#" class="btn btn-block btn-green">Withdraw</a>
                 </div>
             </div>
         </div>

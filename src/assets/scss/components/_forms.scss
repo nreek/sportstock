@@ -10,6 +10,10 @@
         label { margin-bottom: 5px; }
     }
 
+    label {
+        font-weight: 500;
+    }
+
     .icon { 
         height: 23px; 
         margin-right: 10px;
@@ -44,7 +48,7 @@ input[type=text], input[type=password], input[type=phone], input[type=email], se
 
 input[type=text], input[type=password], input[type=phone], input[type=email], select, .form-control {
     &.form-control{
-        border: 1px solid #4F3067;
+        border: 1px solid #345311;
         background-color: var(--c-input__bg);
         padding: 7px 20px;
         max-width: 420px;

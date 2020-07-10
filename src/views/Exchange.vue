@@ -7,8 +7,8 @@
 
         <div class="card large">
             <div class="card__header">
-                <router-link to="/wallets" class="fw-bold">
-                    <img src="../assets/icons/caret.png" class="icon" width="8" alt="">
+                <router-link to="/wallets" class="fw-bold flex items-center">
+                    <img src="../assets/icons/caret.png" class="icon mr-2" width="8" alt="">
                     Go back
                 </router-link>
 
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="col-md-12">
-                    <a href="#" class="btn btn-block btn-secondary">Exchange Now</a>
+                    <a href="#" class="btn btn-block btn-green">Exchange Now</a>
                 </div>
             </div>
         </div>

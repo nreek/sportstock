@@ -2,11 +2,11 @@
     <div class="form-control select-advanced" :class="{'active' : active }">
         <div class="select-advanced__header" @click="active = !active">
             <span>{{ selected ? selected.name : placeholder }}</span>
-            <img src="../assets/icons/caret-down.png" :class="{'transform-rotate-180' : active }" width="14" alt="">
+            <img src="../assets/icons/caret-down.png" :class="{'transform-rotate-180' : active }" class="icon" style="height: 7px; margin-right: 0" alt="">
         </div>
         <div class="select-advanced__body">
             <div class="select-advanced__search">
-                <img src="../assets/icons/search.png" width="15" alt="">
+                <img src="../assets/icons/search.png" style="width: 15px; height: auto" class="icon" alt="">
                 <input type="text" placeholder="Search" v-model="search" name="q" id="q" autocomplete="false">
             </div>
             <div class="select-advanced__list">
@@ -81,8 +81,8 @@ export default {
             width: calc(100% + 2px);
             left: -1px;
             background: var(--select-advanced__bg-active);
-            border-left: 1px solid #4F3067;
-            border-right: 1px solid #4F3067;
+            border-left: 1px solid#385311;
+            border-right: 1px solid#385311;
             z-index: 10;
         }
 
@@ -97,8 +97,8 @@ export default {
         }
 
         &__search {
-            border-top: 1px solid #6E295F;
-            border-bottom: 1px solid #6E295F;
+            border-top: 1px solid#385311;
+            border-bottom: 1px solid#385311;
             position: relative;
 
             img {
@@ -109,7 +109,7 @@ export default {
 
             input { 
                 width: 100%;
-                border: 1px solid #4F3067 !important;
+                border: 1px solid #385311 !important;
                 border-radius: 5px;
                 background: var(--c_primary-light);
                 padding: 5px 10px 5px 25px;

@@ -67,15 +67,15 @@ export default {
         --c-primary: #233A09;
         --c_secondary : #6C4A8F;
         --c_primary-light: #1D3106;
-        --c_green: #BCFF73;
+        --c_green: #32ED00;
         --text__color : white;
         --pills__bg: #1F1234;
 
-        --c-input__bg: #291840;
+        --c-input__bg: #233A09;
         --toggle-theme__left: 2px;
         --icon__filter: invert(100%) brightness(2);
         --card__border-color: transparent;
-        --select-advanced__bg-active: #392456;
+        --select-advanced__bg-active: #2f4c07;
 
         .wallets {
             --text__color: #D8D8D8;

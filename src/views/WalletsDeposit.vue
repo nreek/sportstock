@@ -6,9 +6,9 @@
         </h2>
 
         <div class="card large">
-            <div class="card__header">
-                <router-link to="/wallets" class="fw-bold">
-                    <img src="../assets/icons/caret.png" class="icon" width="8" alt="">
+            <div class="card__header mb-4">
+                <router-link to="/wallets" class="fw-bold flex items-center">
+                    <img src="../assets/icons/caret.png" class="icon mr-2" width="8" alt="">
                     Go back
                 </router-link>
 
@@ -32,13 +32,13 @@
                             <input ref="inputAddress" v-if="address" type="text" :value="address">
                             <span v-else>Loading...</span>
                             <div class="input__append" @click="copy">
-                                <img src="../assets/icons/copy.png" alt="" width="14">
+                                <img src="../assets/icons/copy.png" alt="" class="icon" width="14">
                                 {{ copyLabel }}
                             </div>
                         </div>
 
-                        <h6 class="text-secondary mt-5">
-                            <img src="../assets/icons/alert.png" width="17" alt="">
+                        <h6 class="text-green flex items-center mt-5">
+                            <img src="../assets/icons/alert.png" class="icon mr-2" width="17" alt="">
                             Important:
                         </h6>
 
@@ -99,14 +99,18 @@ export default {
     @import '@/assets/scss/settings/_mixins.scss';
 
     .wallets-deposit {
+        width: 100%;
+
         .form-control.large { 
             max-width: none;
+            border-radius: 20px;
+            border-color: #979797;
+            margin-top: 15px;
 
             input {
                 width: calc(100% - 100px);
                 max-width: none;
                 font-size: 18px;
-                pointer-events: none;   
             }
 
             .input__append { margin-top: 3px; }

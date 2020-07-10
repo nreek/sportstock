@@ -15,7 +15,7 @@ export default {
     @import '@/assets/scss/settings/_mixins.scss';
 
     .alert {
-        border: 1px solid $c_secondary;
+        border: 1px solid white;
         padding: 10px 20px;
         font-size: 14px;
         display: flex;
@@ -28,10 +28,10 @@ export default {
         }
 
         /deep/ {
-            p { color: $c_secondary; margin: 0; }
+            p { margin: 0; }
             
             a {
-                background: $c_secondary;
+                background: #385d0f;
                 border-radius: 5px;
                 color: white !important;
                 padding: 3px 30px;
