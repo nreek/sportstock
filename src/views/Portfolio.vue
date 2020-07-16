@@ -41,7 +41,7 @@
                         </thead>
 
                         <tbody>
-                            <tr v-for="(player, index) in ['C. Ronaldo', 'Neymar Jr', 'R. Madrid', 'Falcão', 'Paraná']" :key="index">
+                            <tr v-for="(player, index) in players" :key="index">
                                 <td class='text-bold'>{{ `354${index}2${index + 7}5${index}` }}</td>
                                 <td>
                                     <img :src="require('@/assets/images/player.png')" width="46" alt="">
@@ -49,8 +49,7 @@
                                 <td>{{ player }}</td>
                                 <td>Player</td>
                                 <td>98{{index}}2.{{ index * 10 + 1 }}</td>
-                                <td></td>
-                                <td></td>
+                                <td :id="`spark-${index}`"></td>
                                 <td class="actions">Trade now</td>
                             </tr>
                         </tbody>
@@ -72,9 +71,56 @@ export default {
     components: { Pagination },
     data() {
         return {
-
+            players : ['C. Ronaldo', 'Neymar Jr', 'R. Madrid', 'Falcão', 'Paraná']
         }
     },
+    mounted () {
+        this.players.map( (x, index) => {
+            const opts = {
+                width : 170,
+                height : 50,
+                class: "spark",
+                cursor: {
+                    show: false
+                },
+                select: {
+                    show: false,
+                },
+                legend: {
+                    show: false,
+                },
+                scales: {
+                    x: {
+                        time: false,
+                    },
+                },
+                axes: [
+                    {
+                        show: false,
+                    },
+                    {
+                        show: false,
+                    }
+                ],
+                series: [
+                    {},
+                    {
+                        stroke: "#F23345",
+                        fill: "transparent",
+                    },
+                ],
+            };
+            
+            let can = new window.uPlot(opts, [ 
+                    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21], 
+                    [25093670, 22395560, 25817590, 21847230, 20507460, 17520500, 23735080, 18966120, 19974430, 25817950, 37781330, 34790520, 31130520, 35709870, 24143240, 18369300, 17916260, 19932550, 22684000, 22367480, 24377170, 17272900]
+                ]).ctx.canvas;
+            can.style.width = "170px";
+            can.style.height = "50px";
+            
+            document.getElementById(`spark-${index}`).appendChild(can)
+        })
+    }
 }
 </script>
 
