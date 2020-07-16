@@ -65,11 +65,11 @@ export default {
     .dark {
         --c_primary: #233A09;
         --c-primary: #233A09;
-        --c_secondary : #6C4A8F;
+        --c_secondary : #477534;
         --c_primary-light: #1D3106;
         --c_green: #32ED00;
         --text__color : white;
-        --pills__bg: #1F1234;
+        --pills__bg: #1c2f0d;
 
         --c-input__bg: #233A09;
         --toggle-theme__left: 2px;
