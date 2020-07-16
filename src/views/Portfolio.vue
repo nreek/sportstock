@@ -41,12 +41,13 @@
                         </thead>
 
                         <tbody>
-                            <tr v-for="(player, index) in players" :key="index">
+                            <tr v-for="(player, index) in players" :key="index" @click="modal = true">
                                 <td class='text-bold'>{{ `354${index}2${index + 7}5${index}` }}</td>
                                 <td>
                                     <img :src="require('@/assets/images/player.png')" width="46" alt="">
                                 </td>
                                 <td>{{ player }}</td>
+                                <td>ZHN</td>
                                 <td>Player</td>
                                 <td>98{{index}}2.{{ index * 10 + 1 }}</td>
                                 <td :id="`spark-${index}`"></td>
@@ -56,6 +57,47 @@
                     </table>
                 </div>
                 <Pagination :pages="32" :currentPage="28"></Pagination>
+            </div>
+        </div>
+
+        <div class="modal-shadow" :class="{ 'open' : modal }"></div>
+        <div class="modal modal-player" :class="{ 'open' : modal }">
+            <img @click="modal = false" :src="require('@/assets/images/player-close.png')" class="close">
+
+            <div class="modal-player__header">
+                <div class="row">
+                    <div class="col-md-6 flex items-center">
+                        <img :src="require('@/assets/images/neymar.png')" height="100%" alt="" class="mr-6">
+                        <div class="player-infos">
+                            <h5 class="uppercase font-bold mb-0">Neymar Jr</h5>
+                            <p class="text-green">21 anos</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 flex separator justify-center items-center">
+                        <img :src="require('@/assets/images/team.png')" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-player__body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-1"><strong class="text-green">Date of Birth: </strong> 05/02/1992</p>
+                        <p class="mb-1"><strong class="text-green">Age:</strong> 28</p>
+                        <p class="mb-1"><strong class="text-green">Place of Birth:</strong> Mogi das Cruzes, Brazil</p>
+                        <p class="mb-1"><strong class="text-green">Nationality:</strong> Brazil</p>
+                        <p class="mb-1"><strong class="text-green">Height:</strong> 1.75m / 5 ft 9 in</p>
+                        <p class="mb-1"><strong class="text-green">Weight:</strong> 68kg / 10st 10lb</p>
+                        <p class="mb-1"><strong class="text-green">Position:</strong> Forward</p>
+                    </div>
+                    <div class="col-md-6 flex items-center">
+                        <div class="turboscores">
+                            View more in:
+                            <img :src="require('@/assets/images/turboscores.png')" alt="">
+                            <a href="#" class="modal-player__button">Go now</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -71,7 +113,8 @@ export default {
     components: { Pagination },
     data() {
         return {
-            players : ['C. Ronaldo', 'Neymar Jr', 'R. Madrid', 'Falcão', 'Paraná']
+            players : ['C. Ronaldo', 'Neymar Jr', 'R. Madrid', 'Falcão', 'Paraná'],
+            modal : false
         }
     },
     mounted () {
@@ -150,10 +193,18 @@ export default {
                 font-weight: bold;
             }
 
-            tbody tr { padding-bottom: 15px; }
+            tbody tr { 
+                padding-bottom: 15px; cursor: pointer; 
+
+                &:hover td {
+                    background: #172705;
+                }
+            }
+            
             tbody td {
                 background: #1D3106;
                 padding: 10px 15px;
+                transition: all .4s;
                 
                 &:first-child {
                     border-radius: 10px 0 0 10px;
@@ -166,6 +217,44 @@ export default {
             .actions {
                 color: #14B268;
                 font-size: 12px;
+            }
+        }
+
+        .modal-player__header {
+            padding: 25px 35px 0 35px;
+            background: #172803;
+        }
+
+        .modal-player__body {
+            padding: 80px;
+            background: #142303;
+        }
+
+        .separator {
+            border-left: 2px solid #ffffff14;
+        }
+
+        .turboscores {
+            border-radius: 14px;
+            background-color: #192b03;
+            padding: 20px;
+            text-align: center;
+            max-width: 360px;
+            width: 100%;
+            
+            img {
+                display: block;
+                margin: 20px auto;
+            }
+
+            .modal-player__button {
+                border-radius: 14px;
+                background: linear-gradient(270deg, #D4224C 0%, #5A0C15 100%);
+                font-size: 20px;
+                font-weight: bold;
+                text-transform: uppercase;
+                padding: 10px 40px;
+                display: inline-block;
             }
         }
     }
