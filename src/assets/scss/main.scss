@@ -13,7 +13,7 @@
 #app {
     background: $c_primary;
     min-height: 100vh;
-    font-family: 'Avenir';
+    font-family: 'Avenir', 'Roboto', sans-serif;
 
     &.light {
         background: #f9f7fb;

@@ -33,7 +33,7 @@ export default {
             menuItems : [
                 { title : 'Dashboard', link : 'dashboard', target : '_self' },
                 { title : 'Profile', link : 'profile', target : '_self' },
-                { title : 'Wallets', link : 'wallets', target : '_self' },
+                { title : 'Portfolio', link : 'portfolio', target : '_self' },
                 { title : 'Exchange', link : 'exchange', target : '_self' },
                 { title : 'Trade', link : 'trade', target : '_self' },
                 { title : 'Funds', link : 'funds', target : '_self' },
