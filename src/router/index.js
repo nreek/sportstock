@@ -41,9 +41,9 @@ const routes = [
     component: () => import('../views/Exchange.vue')
   },
   {
-    path: '/funds',
-    name: 'Funds',
-    component: () => import('../views/Funds.vue')
+    path: '/market-cap',
+    name: 'Market Cap',
+    component: () => import('../views/MarketCap.vue')
   },
   {
     path: '/history/:coin',

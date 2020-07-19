@@ -36,7 +36,7 @@ export default {
                 { title : 'Portfolio', link : 'portfolio', target : '_self' },
                 { title : 'Exchange', link : 'exchange', target : '_self' },
                 { title : 'Trade', link : 'trade', target : '_self' },
-                { title : 'Funds', link : 'funds', target : '_self' },
+                { title : 'Market Cap', link : 'market-cap', target : '_self' },
                 { title : 'History', link : 'history', target : '_self' },
                 { title : 'Labpay', link : 'labpay', target : '_blank' },
                 { title : 'Helpdesk', link : 'helpdesk', target : '_self' },
