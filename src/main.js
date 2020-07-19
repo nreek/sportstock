@@ -14,12 +14,14 @@ extend('required', required);
 extend('confirmed', confirmed);
 
 import CoinAlert from '@/components/CoinAlert'
+import SportPanel from '@/components/SportPanel'
 
 Vue.config.productionTip = false
 
 Vue.component('ValidationProvider', ValidationProvider)
 Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('CoinAlert', CoinAlert)
+Vue.component('SportPanel', SportPanel)
 Vue.component('VueContentLoading', VueContentLoading)
 
 new Vue({

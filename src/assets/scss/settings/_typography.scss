@@ -27,6 +27,9 @@ a, a:hover { text-decoration: none; }
     }
 }
 
+.fz-16, .fz-16 * {
+    font-size: 16px !important;
+}
 .fz-14, .fz-14 * {
     font-size: 14px;
 }

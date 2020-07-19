@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Wallets from '../views/Home.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 Vue.use(VueRouter)
 
@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Wallets
+    component: Dashboard
   },
   {
     path: '/wallets',
@@ -20,25 +20,10 @@ const routes = [
     name: 'Portfolio',
     component: () => import('../views/Portfolio.vue')
   },
-  // {
-  //   path: '/wallets/deposit/:coin',
-  //   name: 'WalletsDeposit',
-  //   component: () => import('../views/WalletsDeposit.vue')
-  // },
   {
     path: '/wallets/withdraw/:coin',
     name: 'WalletsWithdraw',
     component: () => import('../views/WalletsWithdraw.vue')
-  },
-  {
-    path: '/exchange/:coin',
-    name: 'ExchangeCoin',
-    component: () => import('../views/Exchange.vue')
-  },
-  {
-    path: '/exchange',
-    name: 'Exchange',
-    component: () => import('../views/Exchange.vue')
   },
   {
     path: '/market-cap',
