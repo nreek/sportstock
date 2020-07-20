@@ -31,7 +31,7 @@ export default {
             menuActive : true,
             mobileActive : false,
             menuItems : [
-                { title : 'Dashboard', link : 'dashboard', target : '_self', icon : 'dashboard.png' },
+                { title : 'Dashboard', link : '/', target : '_self', icon : 'dashboard.png' },
                 { title : 'My Profile', link : 'profile', target : '_self', icon : 'profile.png' },
                 { title : 'Portfolio', link : 'portfolio', target : '_self', icon : 'portfolio.png' },
                 { title : 'Trade', link : 'trade', target : '_self', icon : 'trade.png' },
@@ -81,8 +81,8 @@ export default {
 
         &.menu-active {
             @include desktop {
-                flex: 0 0 270px;
-                max-width: 270px;
+                flex: 0 0 220px;
+                max-width: 220px;
             }
 
             @include mobile {

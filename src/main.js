@@ -7,6 +7,8 @@ import { ValidationProvider, ValidationObserver, extend, localize } from 'vee-va
 import { required, email, confirmed } from 'vee-validate/dist/rules';
 import VueContentLoading from 'vue-content-loading';
 import en from 'vee-validate/dist/locale/en.json';
+import Trend from "vuetrend"
+import TrendChart from "vue-trend-chart";
 
 localize({ en })
 extend('email', email);
@@ -23,6 +25,13 @@ Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('CoinAlert', CoinAlert)
 Vue.component('SportPanel', SportPanel)
 Vue.component('VueContentLoading', VueContentLoading)
+
+
+//Sparline for table listing like Market Cap
+Vue.use(Trend)
+// Full charts for the dashboard: https://github.com/dmtrbrl/vue-trend-chart
+Vue.use(TrendChart);
+
 
 new Vue({
   router,

@@ -2,7 +2,7 @@
     <div class="dashboard page-container w-full">
         <div class="row h-full">
             <div class="col-md-9 main-left">
-                <h2 class="page-title mb-5 flex justify-between">
+                <h2 class="page-title mb-4 flex justify-between">
                     <div class="flex items-center text-bold">
                         <img src="../assets/icons/document.png" class="icon" alt="" style="width: 20px">
                         General Report
@@ -15,7 +15,7 @@
                 </h2>
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 card-info__wrapper">
                         <div class="card card-info">
                             <div class="flex justify-between items-center">
                                 <img src="../assets/icons/house.png" width="28" alt="">
@@ -27,7 +27,7 @@
                             <small>Estimated Equity</small>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 card-info__wrapper">
                         <div class="card card-info">
                             <div class="flex justify-between items-center">
                                 <img src="../assets/icons/usdc.png" width="28" alt="">
@@ -39,7 +39,7 @@
                             <small>USDSC Balance</small>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 card-info__wrapper">
                         <div class="card card-info">
                             <div class="flex justify-between items-center">
                                 <img src="../assets/icons/trade.png" width="28" alt="" class="icon">
@@ -51,7 +51,7 @@
                             <small>Profits So Far</small>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 card-info__wrapper">
                         <div class="card card-info">
                             <div class="flex justify-between items-center">
                                 <img src="../assets/icons/market-cap.svg" width="23" alt="" class="icon">
@@ -62,6 +62,14 @@
                             <h1 class="font-bold">$ 3911.99</h1>
                             <small>Total in Orders</small>
                         </div>
+                    </div>
+                </div>
+            
+                <EquityEvolution></EquityEvolution>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <crowdfunding></crowdfunding>
                     </div>
                 </div>
             </div>
@@ -78,6 +86,18 @@
 
                         <span class="text-bold" :class="index % 3 != 1 ? 'text-green' : 'text-red'">{{ index % 3 != 1 ? '+' : '-' }} {{ index }}5%</span>
                     </div>
+
+                    <div class="card mb-2 flex items-center border border-dashed border-red-800">
+                        <img :src="require('@/assets/icons/empty-shield.png')" width="38" class="mr-2" alt="">
+                        <div class="flex-1">
+                            <p class="font-bold">Create Team Token</p>
+                            <small class="text-green uppercase">Start Now</small>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2 flex justify-center items-center border border-dashed border-green-900" style="background-color: #223a09">
+                        <span class="uppercase font-bold py-2">VIEW ALL</span>
+                    </div>
                 </sport-panel>
 
                 <sport-panel title="Player Market Cap" :icon="require('@/assets/icons/chuteira.svg')">
@@ -91,6 +111,18 @@
 
                         <span class="text-bold" :class="index % 3 != 1 ? 'text-green' : 'text-red'">{{ index % 3 != 1 ? '+' : '-' }} {{ index }}5%</span>
                     </div>
+
+                    <div class="card mb-2 flex items-center border border-dashed border-red-800">
+                        <img :src="require('@/assets/icons/empty-shield.png')" width="38" class="mr-2" alt="">
+                        <div class="flex-1">
+                            <p class="font-bold">Create Player Token</p>
+                            <small class="text-green uppercase">Start Now</small>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2 flex justify-center items-center border border-dashed border-green-900" style="background-color: #223a09">
+                        <span class="uppercase font-bold py-2">VIEW ALL</span>
+                    </div>
                 </sport-panel>
 
             </div>
@@ -99,9 +131,12 @@
 </template>
 
 <script>
+import EquityEvolution from '@/components/EquityEvolution'
+import Crowdfunding from '@/components/Crowdfunding'
+
 export default {
     name: 'History',
-    components: {},
+    components: { EquityEvolution, Crowdfunding },
     data() {
         return {
             teams : ['Paraná', 'Cruzeiro', 'Palmeiras', 'Criciuma', 'São Bento', 'Real Madrid', 'Barcelona'],
@@ -119,6 +154,7 @@ export default {
 
     .dashboard {
         padding-right: 16px;
+        padding-left: 20px;
         margin-top: -20px;
 
         .main-left {
@@ -134,7 +170,7 @@ export default {
             .card {
                 padding: 7px 10px;
 
-                p { font-size: 14px; line-height: 1; padding-top: 3px; }
+                p { line-height: 1; padding-top: 3px; }
 
                 img { border-radius: 50%; }
             }
@@ -143,6 +179,15 @@ export default {
         .card-info {
             padding-bottom: 10px;
             position: relative;
+
+            @media screen and (min-width: 1024px) and (max-width: 1400px){
+                &__wrapper { 
+                    padding-left: 7.5px;
+                    padding-right: 7.5px;
+
+                    h1 { font-size: 23px !important; }
+                }
+            }
 
             &:before{
                 content: '';

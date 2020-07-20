@@ -47,7 +47,18 @@
                                     <td>$17,009,569.98</td>
                                     <td>${{index * 3}}{{index}}.458.17{{index}}BTC</td>
                                     <td :class=" index % 3 != 1 ? 'text-green' : 'text-red'">0,{{ index * 2 }}{{ index }}%</td>
-                                    <td :id="`spark-${index}`"></td>
+                                    <td>
+                                        <trend
+                                        :data="[0, 2, 5, 9, 5, index * 10, 3, 5, 0, 0, 1, index*8, 2, 9, 0]"
+                                        gradientDirection="right"
+                                        :gradient="['#f23345', '#3adb00']"
+                                        :padding="8"
+                                        :radius="8"
+                                        :stroke-width="2"
+                                        auto-draw
+                                        smooth>
+                                        </trend>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

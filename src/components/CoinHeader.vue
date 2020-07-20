@@ -8,11 +8,11 @@
         </router-link>
         
         <div class="d-flex">
-            <div class="toggle-theme"  @click="$store.commit('TOGGLE_THEME')">
+            <!-- <div class="toggle-theme"  @click="$store.commit('TOGGLE_THEME')">
                 <img src="../assets/icons/toggle-dark.png" class="icon" alt="" width="20">
                 <div class="toggle-theme__toggler"></div>
                 <img src="../assets/icons/toggle-light.png" class="icon" alt="" width="27">
-            </div>
+            </div> -->
 
             <router-link to="/login" class="logout" @click="logout">
                 <img src="../assets/icons/logout.png" class="icon mr-2" width="16" alt="">
@@ -42,7 +42,7 @@ export default {
     @import '@/assets/scss/settings/_mixins.scss';
 
     .logo { 
-        width: 230px;
+        width: 180px;
         transition: none;
         transform: translateX(-10px);
     }
@@ -66,10 +66,10 @@ export default {
 
     .decor{
         position: absolute;
-        width: 25px;
-        height: 73px;
+        width: 22px;
+        height: 74px;
         right: -13px;
-        top: 0;
+        top: -13.5px;
     }
 
     .logout {
@@ -99,7 +99,7 @@ export default {
             width: 50px;
             border: 1px solid rgba(255,255,255,0.29);
             border-radius: 11.5px;
-            background-color: #6C4A8F;
+            background-color: var(--c-primary);  
             position: relative;
             margin: 0 7.5px;
 
@@ -108,7 +108,7 @@ export default {
                 height: 17px;
                 width: 17px;
                 border-radius: 50%;
-                background: radial-gradient(circle, #6C4A8F 0%, #291840 100%);
+                background: radial-gradient(circle, #456222 0%, var(--c-primary)  100%);
                 position: absolute;
                 top: 2px;
                 left: var(--toggle-theme__left);
