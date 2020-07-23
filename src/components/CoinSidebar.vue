@@ -1,26 +1,29 @@
 <template>
-    <section class="section-sidebar" :class="{ 'menu-active' : menuActive }" ref="sectionSidebar" @click="mobileActive = !mobileActive">
-        <!-- <img src="../assets/images/toggle-menu.png" class="toggle-menu hide-for-mobile-only" @click="menuActive = !menuActive" alt=""> -->
+    <div>
+        <img src="../assets/icons/menu.png" class="show-for-mobile-only icon close" alt="Open menu" @click="menuActive = !menuActive" width="25">
 
-        <nav class="main-nav" :class="{ 'mobile-active' : mobileActive }">
-            <div 
-            v-for="item in menuItems" 
-            :key="item.link"
-            class="main-nav__link" 
-            >
-                <router-link v-if="item.target == '_self'" :to="`/${item.link}`">
-                    <img class="icon" :src="require(`@/assets/icons/${item.icon}`)" alt="">
-                    <span v-html="item.title"></span>
-                </router-link>
-                <a :href="item.link" target="_blank" v-else>
-                    <img class="icon" :src="require(`@/assets/icons/${item.icon}`)" alt="">
-                    <span v-html="item.title"></span>
-                </a>
-            </div>
-        </nav>  
+        <section class="section-sidebar" :class="{ 'menu-active' : menuActive }" ref="sectionSidebar" @click="mobileActive = !mobileActive">
+            <!-- <img src="../assets/images/toggle-menu.png" class="toggle-menu hide-for-mobile-only" @click="menuActive = !menuActive" alt=""> -->
 
-        <img src="../assets/icons/menu.png" class="show-for-mobile-only" alt="Open menu" width="25">
-    </section>
+            <nav class="main-nav" :class="{ 'mobile-active' : mobileActive }">
+                <div 
+                v-for="item in menuItems" 
+                :key="item.link"
+                class="main-nav__link" 
+                >
+                    <router-link v-if="item.target == '_self'" :to="`/${item.link}`">
+                        <img class="icon" :src="require(`@/assets/icons/${item.icon}`)" alt="">
+                        <span v-html="item.title"></span>
+                    </router-link>
+                    <a :href="item.link" target="_blank" v-else>
+                        <img class="icon" :src="require(`@/assets/icons/${item.icon}`)" alt="">
+                        <span v-html="item.title"></span>
+                    </a>
+                </div>
+            </nav>  
+
+        </section>
+        </div>
 </template>
 
 <script>
@@ -54,6 +57,14 @@ export default {
     @import '@/assets/scss/settings/_variables.scss';
     @import '@/assets/scss/settings/_mixins.scss';
 
+    .close {
+        position: absolute;
+        z-index: 1000;
+        top: 20px;
+        left: 20px;
+        width: 20px;
+    }
+
     .section-sidebar {
         position: relative;
         grid-area: sidebar;
@@ -63,13 +74,19 @@ export default {
         border-right: 1px solid #ffffff17;
         margin-top: -20px;
 
-        @include mobile {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
         &, * { transition: all .6s; }
+
+        @include mobile {
+            position: absolute;
+            z-index: 100;
+            background: #1d3106;
+            width: 70vw;
+            max-width: 70vw;
+            height: calc(100vh - 53px);
+            overflow-y: auto;
+            left: -100%;
+            box-shadow: 0vw 0 rgba(0,0,0,0.0);
+        }
 
         .toggle-menu {
             position: absolute;
@@ -80,15 +97,14 @@ export default {
         }
 
         &.menu-active {
+            left: 0;
+            box-shadow: 30vw 0 rgba(0,0,0,0.5);
+
             @include desktop {
                 flex: 0 0 220px;
                 max-width: 220px;
-            }
-
-            @include mobile {
-                padding: 15px 20px;
-                flex: 0 0 auto;
-                max-width: none;
+                min-width: 220px;
+                box-shadow: none;
             }
         }
 
@@ -103,26 +119,6 @@ export default {
         border-bottom: 1px solid rgba(white, 0.05);
         padding-bottom: 20px;
         margin-top: 40px;
-
-        @include mobile {
-            position: absolute;
-            background: var(--c-primary);
-            width: 100vw;
-            margin: 0;
-            padding-left: 20px;
-            left: 0;
-            z-index: 1000;
-            overflow: hidden;
-            max-height: 0;
-            transition: all .8s;
-            position: absolute;
-            top: 60px;
-
-            &.mobile-active {
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-                max-height: 90vh;
-            }
-        }
 
         &__link a {
             display: flex;

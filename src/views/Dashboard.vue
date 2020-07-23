@@ -15,7 +15,7 @@
                 </h2>
 
                 <div class="row">
-                    <div class="col-md-3 card-info__wrapper">
+                    <div class="col-md-3 card-info__wrapper mb-4 md:mb-0">
                         <div class="card card-info">
                             <div class="flex justify-between items-center">
                                 <img src="../assets/icons/house.png" width="28" alt="">
@@ -27,7 +27,7 @@
                             <small>Estimated Equity</small>
                         </div>
                     </div>
-                    <div class="col-md-3 card-info__wrapper">
+                    <div class="col-md-3 card-info__wrapper mb-4 md:mb-0">
                         <div class="card card-info">
                             <div class="flex justify-between items-center">
                                 <img src="../assets/icons/usdc.png" width="28" alt="">
@@ -39,7 +39,7 @@
                             <small>USDSC Balance</small>
                         </div>
                     </div>
-                    <div class="col-md-3 card-info__wrapper">
+                    <div class="col-md-3 card-info__wrapper mb-4 md:mb-0">
                         <div class="card card-info">
                             <div class="flex justify-between items-center">
                                 <img src="../assets/icons/trade.png" width="28" alt="" class="icon">
@@ -51,7 +51,7 @@
                             <small>Profits So Far</small>
                         </div>
                     </div>
-                    <div class="col-md-3 card-info__wrapper">
+                    <div class="col-md-3 card-info__wrapper mb-4 md:mb-0">
                         <div class="card card-info">
                             <div class="flex justify-between items-center">
                                 <img src="../assets/icons/market-cap.svg" width="23" alt="" class="icon">
@@ -70,6 +70,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <crowdfunding></crowdfunding>
+                    </div>
+
+                    <div class="col-md-6">
+                        <news></news>
                     </div>
                 </div>
             </div>
@@ -133,10 +137,11 @@
 <script>
 import EquityEvolution from '@/components/EquityEvolution'
 import Crowdfunding from '@/components/Crowdfunding'
+import News from '@/components/News'
 
 export default {
     name: 'History',
-    components: { EquityEvolution, Crowdfunding },
+    components: { EquityEvolution, Crowdfunding, News },
     data() {
         return {
             teams : ['Paraná', 'Cruzeiro', 'Palmeiras', 'Criciuma', 'São Bento', 'Real Madrid', 'Barcelona'],
@@ -164,8 +169,11 @@ export default {
         .sidebar-right {
             background: #27410A;
             border-left: 1px solid rgba(255,255,255,0.07);
-            height: 100%;
             padding: 0;
+
+            @include desktop {
+                height: 100%;
+            }
 
             .card {
                 padding: 7px 10px;

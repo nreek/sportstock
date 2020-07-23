@@ -3,8 +3,8 @@
         <!-- <CardBalance></CardBalance> -->
         <router-link to="/" class="d-flex logo-wrapper"> 
             <img alt="Logo" class="logo hide-for-mobile-only" :src="require(`@/assets/images/logo-dark.png`)">
-            <img alt="Logo" class="show-for-mobile-only" :src="require(`@/assets/images/logo-small.png`)" width="30">
-            <img :src="require('@/assets/images/logo-decor.png')" alt="" class="decor">
+            <img alt="Logo" class="show-for-mobile-only" :src="require(`@/assets/images/logo-dark.png`)" width="130">
+            <img :src="require('@/assets/images/logo-decor.png')" alt="" class="decor show-for-large-only">
         </router-link>
         
         <div class="d-flex">
@@ -59,6 +59,7 @@ export default {
         
         @include mobile {
             justify-content: center;
+            padding: 10px 30px;
         }
     }
 
@@ -70,6 +71,8 @@ export default {
         height: 74px;
         right: -13px;
         top: -13.5px;
+
+        @media screen and (max-width: 1025px) { display: none !important; }
     }
 
     .logout {
