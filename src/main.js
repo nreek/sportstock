@@ -17,6 +17,7 @@ extend('confirmed', confirmed);
 
 import CoinAlert from '@/components/CoinAlert'
 import SportPanel from '@/components/SportPanel'
+import Chat from '@/components/Chat'
 
 Vue.config.productionTip = false
 
@@ -25,6 +26,7 @@ Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('CoinAlert', CoinAlert)
 Vue.component('SportPanel', SportPanel)
 Vue.component('VueContentLoading', VueContentLoading)
+Vue.component('Chat', Chat)
 
 
 //Sparline for table listing like Market Cap
