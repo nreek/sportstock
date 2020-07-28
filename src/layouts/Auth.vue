@@ -1,9 +1,14 @@
 <template>
     <div class="page-auth">
         <div class="auth-content">
-            <slot></slot>
-
-            <p class="text-secondary d-block fz-14 mt-5">By signing-up, you agree to our <br> <a href="#" class="text-white">Terms and Conditions</a> & <a href="#" class="text-white">Privacy Policy</a></p>
+            <div class="auth-header">
+                <img src="../assets/images/logo-dark.png" alt="" class="logo" width="180">
+            </div>
+            <div class="auth-body">
+                <slot></slot>
+            </div>
+            <br>
+            <p class="text-secondary text-center d-block fz-14 mt-2">By signing-up, you agree to our <br> <a href="#" class="text-white">Terms and Conditions</a> & <a href="#" class="text-white">Privacy Policy</a></p>
         </div>
     </div>
 </template>
@@ -35,7 +40,7 @@ export default {
             position: absolute;
             top: 0;
             left: 0;
-            background-color: rgba(#1F1234, 0.9);
+            background-color: rgba(#233A09, 0.9);
             background-size: contain;
             background-position: right bottom;
             background-image: url('../assets/images/auth-texture.png');
@@ -53,9 +58,9 @@ export default {
             .btn-auth {
                 height: 50px;
                 width: 133px;
-                border: 1px solid #402A5B;
+                border: 1px solid #32ED00;
                 border-radius: 7px;
-                background-color: #170D28;
+                background-color: #2cd200;
                 display: flex;
                 float: left;
                 margin-right: 15px;
@@ -68,9 +73,9 @@ export default {
                 &:hover { color: white !important }
 
                 &.secondary {
-                    border: 1px solid #6C4A8F;
-                    background-color: rgba(#291840, 0.5);
-                    color: #A87AD2 !important;
+                    border: 1px solid #32ED00;
+                    background-color: rgba(#2cd200, 0.5);
+                    color: white !important;
                 }
             }
         }
@@ -78,8 +83,26 @@ export default {
 
     .auth-content {
         width: 100%;
-        max-width: 357px;
         position: relative;
         z-index: 10;
+        background: #233A09;
+        max-width: 450px;
+        border-radius: 20px;
+        box-shadow: 0 5px 30px #00000033;
+        padding-bottom: 20px;
+        max-height: 90vh;
+        overflow-x: auto;
+
+        .auth-header {
+            display: flex;
+            justify-content: center;
+            background: #1e3107;
+            border-radius: 20px 20px 0 0;
+            padding: 5px 20px;
+        }
+
+        .auth-body {
+            padding: 10px 40px 0 40px;
+        }
     }
 </style>

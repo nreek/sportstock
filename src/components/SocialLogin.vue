@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="login-with pt-3 pb-3 d-flex align-items-center">
+        <!-- <div class="login-with pt-3 pb-3 d-flex align-items-center">
             <div class="line flex-1"></div>
             <span v-html="title"></span>
             <div class="line flex-1"></div>
@@ -15,7 +15,7 @@
             <a href="#" class="btn-social btn-social-twitter">
                 <img src="../assets/icons/twitter.svg" class="icon" alt="" height="30">
             </a>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -50,6 +50,11 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        img {  
+            width: auto;
+            height: 35px;
+        }
 
         &-gplus { background: #df4f37; }
         &-facebook { background: #3a599d; }

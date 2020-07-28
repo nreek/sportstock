@@ -1,7 +1,6 @@
 <template>
     <div style="margin-bottom: 80px;">
-        <img src="../assets/images/logo-small.png" alt="" class="logo" width="50">
-        <h4 class="fw-bold mt-2 mb-4">Forgot Password?</h4>
+        <h3 class="fw-bold mt-2 mb-4">Forgot Password?</h3>
 
         <form action="">
             <input type="text" placeholder="E-mail" class="form-control mb-3" v-model="form.email">

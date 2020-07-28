@@ -1,7 +1,6 @@
 <template>
     <div class="login">
-        <img src="../assets/images/logo-small.png" alt="" class="logo" width="50">
-        <h4 class="fw-bold mt-2 mb-4">Sign In</h4>
+        <h5 class="fw-bold mt-2 mb-4 text-center">Sign In</h5>
         <ValidationObserver v-slot="{ handleSubmit }">
             <form class="form" @submit.prevent="handleSubmit(onSubmit)">
                 <ValidationProvider name="e-mail" rules="required" v-slot="{ errors }" class="mb-3">

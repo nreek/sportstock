@@ -4,7 +4,11 @@
 
         <section class="section-sidebar" :class="{ 'menu-active' : menuActive }" ref="sectionSidebar" @click="mobileActive = !mobileActive">
             <!-- <img src="../assets/images/toggle-menu.png" class="toggle-menu hide-for-mobile-only" @click="menuActive = !menuActive" alt=""> -->
-
+            <div class="user text-center p-4">
+                <img src="http://lorempixel.com/200/200/people/" alt="" class="user-picture rounded-full border-2 border-white mb-4 block mx-auto">
+                <h6 class="font-bold mb-0">James Batista</h6>
+                <span class="font-thin">UID: 81745</span>
+            </div>
             <nav class="main-nav" :class="{ 'mobile-active' : mobileActive }">
                 <div 
                 v-for="item in menuItems" 
@@ -34,7 +38,7 @@ export default {
             menuActive : true,
             mobileActive : false,
             menuItems : [
-                { title : 'Dashboard', link : '/', target : '_self', icon : 'dashboard.png' },
+                { title : 'Dashboard', link : '', target : '_self', icon : 'dashboard.png' },
                 { title : 'My Profile', link : 'profile', target : '_self', icon : 'profile.png' },
                 { title : 'Portfolio', link : 'portfolio', target : '_self', icon : 'portfolio.png' },
                 { title : 'Trade', link : 'trade', target : '_self', icon : 'trade.png' },
@@ -57,6 +61,11 @@ export default {
     @import '@/assets/scss/settings/_variables.scss';
     @import '@/assets/scss/settings/_mixins.scss';
 
+    .user {
+        background-image: url('../assets/images/sidebar-bg.png');
+        background-size: cover;
+    }
+
     .close {
         position: absolute;
         z-index: 1000;
@@ -68,7 +77,7 @@ export default {
     .section-sidebar {
         position: relative;
         grid-area: sidebar;
-        padding: 40px 0px;
+        padding: 0 0 40px 0px;
         flex: 0 0 70px;
         max-width: 70px;
         border-right: 1px solid #ffffff17;
@@ -118,7 +127,6 @@ export default {
     .main-nav {
         border-bottom: 1px solid rgba(white, 0.05);
         padding-bottom: 20px;
-        margin-top: 40px;
 
         &__link a {
             display: flex;
