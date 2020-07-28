@@ -20,6 +20,26 @@
                             <span class="message-text" :class="`ct-${message.type}`" v-html="message.text"></span>
                         </div>
                     </div>
+
+                    <div class="message">
+                        <div class="flex-1 text-center">
+                            <span class="message-time">2:08 PM </span>
+                            <span class="message-text" :class="`ct-gray`">Fred has joined the chat</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-panel__footer">
+                    <div class="chat-panel__warning mx-8 mb-4" style="color: red">
+                        Trying to reconnect...
+                    </div>
+
+                    <input class="chat-panel__input" placeholder="Write a message..." />
+
+                    <div class="chat-panel__footer-info flex justify-between">
+                        <span style="color: #10E014">3 online</span>
+                        <span style="color: #0076FF">Brandon is typing...</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,7 +120,7 @@ export default {
         &-time {
             font-size: 10px;
             color: rgba(255,255,255,0.5);
-            vertical-align: -1px;
+            vertical-align: 1px;
         }
     }
 
@@ -157,6 +177,32 @@ export default {
                 padding: 15px 40px;
                 font-size: 13px;
             }
+
+            &__warning {
+                border: 1px solid rgba(208,2,27,0.1);
+                border-radius: 4px;
+                background-color: rgba(208,2,27,0.1);
+                text-align: center;
+                padding: 7px 20px;
+                font-size: 13px;
+            }
+
+            &__footer{
+                padding: 5px 15px;
+
+                &-info {
+                    font-size: 11px;    
+                }
+            }
+
+            &__input {
+                background: transparent;
+                border: none;
+                width: 100%;
+                margin-bottom: 10px;
+                outline: none;
+                font-size: 14px;
+            }
         }
 
         &-bubble {
@@ -211,5 +257,6 @@ export default {
         .ct-blue { color: #01A6EF; }
         .ct-green { color: #83FB47; }
         .ct-pink { color: #F481FF; }
+        .ct-gray { color: rgba(255,255,255,0.8); }
     }
 </style>
