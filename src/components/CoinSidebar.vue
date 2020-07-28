@@ -2,14 +2,16 @@
     <div>
         <img src="../assets/icons/menu.png" class="show-for-mobile-only icon close" alt="Open menu" @click="menuActive = !menuActive" width="25">
 
-        <section class="section-sidebar" :class="{ 'menu-active' : menuActive }" ref="sectionSidebar" @click="mobileActive = !mobileActive">
+        <section class="section-sidebar" :class="{ 'menu-active' : menuActive }" ref="sectionSidebar">
             <!-- <img src="../assets/images/toggle-menu.png" class="toggle-menu hide-for-mobile-only" @click="menuActive = !menuActive" alt=""> -->
             <div class="user text-center p-4">
                 <img src="http://lorempixel.com/200/200/people/" width="150" height="150" alt="" class="user-picture rounded-full border-2 border-white mb-4 block mx-auto">
-                <h6 class="font-bold mb-0">James Batista</h6>
-                <span class="font-thin">UID: 81745</span>
+                <div class="user-info">
+                    <h6 class="font-bold mb-0">James Batista</h6>
+                    <span class="font-thin">UID: 81745</span>
+                </div>
             </div>
-            <nav class="main-nav" :class="{ 'mobile-active' : mobileActive }">
+            <nav class="main-nav">
                 <div 
                 v-for="item in menuItems" 
                 :key="item.link"
@@ -26,6 +28,27 @@
                     </a>
                 </div>
             </nav>  
+
+            <div class="flex flex-col px-5 py-6 hide-for-large">
+                <div class="flex-1 mb-2">
+                    <input type="text" class="search" placeholder="Search for...">
+                </div>
+
+                <router-link to="/wallets/deposit/BTC" class="flex items-center my-2 text-green">
+                    <img src="../assets/icons/deposit-usdsc.png" class="mr-2" width="22" alt="">
+                    Deposit USDSC
+                </router-link>
+
+                <router-link to="/wallets/withdraw/BTC" class="flex items-center my-2 text-red">
+                    <img src="../assets/icons/withdraw-usdsc.png" class="mr-2" width="22" alt="">
+                    Withdraw USDSC
+                </router-link>
+
+                <router-link to="/login" class="flex items-center my-2" @click="logout">
+                    <img src="../assets/icons/logout.png" class="icon mr-2" width="16" alt="">
+                    Logout
+                </router-link>
+            </div>
 
             <div class="help px-5 py-6">
                 <span>Need help?</span>
@@ -65,11 +88,6 @@ export default {
             ]
         }
     },
-    mounted () {
-        if (window.innerWidth < 768) {
-            this.$refs.sectionSidebar.classList += ' menu-active'
-        }
-    }
 }
 </script>
 
@@ -80,6 +98,16 @@ export default {
     .user {
         background-image: url('../assets/images/sidebar-bg.png');
         background-size: cover;
+
+        @include mobile {
+            display: flex;
+            align-items: center;
+
+            img { 
+                width: 80px; 
+                margin: 0 15px 0 0 !important;
+            }
+        }
     }
 
     .help {
@@ -96,7 +124,7 @@ export default {
     }
 
     .close {
-        position: absolute;
+        position: fixed;
         z-index: 1000;
         top: 20px;
         left: 20px;
@@ -107,15 +135,16 @@ export default {
         position: relative;
         grid-area: sidebar;
         padding: 0 0 40px 0px;
-        flex: 0 0 70px;
-        max-width: 70px;
+        flex: 0 0 220px;
+        max-width: 220px;
+        min-width: 220px;
         border-right: 1px solid #ffffff17;
         margin-top: -20px;
 
         &, * { transition: all .6s; }
 
         @include mobile {
-            position: absolute;
+            position: fixed;
             z-index: 100;
             background: #1d3106;
             width: 70vw;
@@ -149,7 +178,6 @@ export default {
         &:not(.menu-active) {
             .toggle-menu { transform: rotate(180deg); }
             .logo { width: 30px;}
-            .main-nav__link span { opacity: 0; }
         }
     }
 

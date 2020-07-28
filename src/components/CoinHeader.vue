@@ -7,14 +7,14 @@
             <img :src="require('@/assets/images/logo-decor.png')" alt="" class="decor show-for-large-only">
         </router-link>
         
-        <div class="d-flex flex-1 ml-5">
+        <div class="d-flex flex-1 ml-5 hide-for-mobile-only">
             <!-- <div class="toggle-theme"  @click="$store.commit('TOGGLE_THEME')">
                 <img src="../assets/icons/toggle-dark.png" class="icon" alt="" width="20">
                 <div class="toggle-theme__toggler"></div>
                 <img src="../assets/icons/toggle-light.png" class="icon" alt="" width="27">
             </div> -->
 
-            <div class="flex-1 hide-for-mobile-only">
+            <div class="flex-1">
                 <input type="text" class="search" placeholder="Search for...">
             </div>
 
@@ -70,6 +70,9 @@ export default {
         flex-wrap: wrap;    
         padding: 15px 50px 15px 30px;
         margin-bottom: 20px;
+        position: fixed;
+        width: 100vw;
+        z-index: 100;
         
         @include mobile {
             justify-content: center;
@@ -78,22 +81,6 @@ export default {
     }
 
     .logo-wrapper { position: relative; }
-
-    .search {
-        width: 100%;
-        outline: none;
-        padding: 10px;
-        max-width: 100% !important;
-        font-weight: bold;
-        border: none;
-        font-size: 17px;
-        letter-spacing: 1px;
-
-        &::placeholder {
-            opacity: 0.4;
-            font-weight: 500;
-        }
-    }
 
     .decor{
         position: absolute;

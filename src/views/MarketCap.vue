@@ -20,7 +20,7 @@
                 <div class="col-md-12">
 
                     <div class="table-responsive">
-                        <table class="mt-3">
+                        <table class="md:mt-3">
                             <thead>
                                 <tr>
                                     <th>Rank</th>
@@ -36,7 +36,7 @@
                             <tbody>
                                 <tr v-for="(name, index) in teams" :key="index">
                                     <td class="text-center">{{ index }}</td>
-                                    <td>
+                                    <td style="min-width: 120px;">
                                         <div class="flex items-center">
                                             <img src="../assets/images/team-logo.png" alt="" class="mr-2">
                                             <span class="text-bold">{{ name }}</span>

@@ -172,3 +172,19 @@ input[type=text], input[type=password], input[type=phone], input[type=email], se
     font-size: .7em;
     color: red;
 }
+
+.search {
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    max-width: 100% !important;
+    font-weight: bold;
+    border: none !important;
+    font-size: 17px;
+    letter-spacing: 1px;
+
+    &::placeholder {
+        opacity: 0.4;
+        font-weight: 500;
+    }
+}
