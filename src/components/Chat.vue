@@ -257,6 +257,6 @@ export default {
         .ct-blue { color: #01A6EF; }
         .ct-green { color: #83FB47; }
         .ct-pink { color: #F481FF; }
-        .ct-gray { color: rgba(255,255,255,0.8); }
+        .ct-gray { color: rgba(255,255,255,0.7); }
     }
 </style>

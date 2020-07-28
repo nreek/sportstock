@@ -9,6 +9,8 @@
                 </div>
             </div>
         </div>
+
+        <chat></chat>
     </div>
 </template>
 

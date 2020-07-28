@@ -2,7 +2,6 @@
     <div id="app" :class="layout == 'Default' ? $store.state.theme : 'dark'">
         <component :is="layout">
             <router-view :key="$router.path"/>
-            <chat></chat>
         </component>
     </div>
 </template>

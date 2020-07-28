@@ -116,7 +116,7 @@
                         <span class="text-bold" :class="index % 3 != 1 ? 'text-green' : 'text-red'">{{ index % 3 != 1 ? '+' : '-' }} {{ index }}5%</span>
                     </div>
 
-                    <div class="card mb-2 flex items-center border border-dashed border-red-800">
+                    <div class="card mb-2 mt-2 md:mt-0 flex items-center border border-dashed border-red-800">
                         <img :src="require('@/assets/icons/empty-shield.png')" width="38" class="mr-2" alt="">
                         <div class="flex-1">
                             <p class="font-bold">Create Player Token</p>
