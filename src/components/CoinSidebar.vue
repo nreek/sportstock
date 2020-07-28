@@ -87,7 +87,7 @@ export default {
     name : 'CoinSidebar',
     data() {
         return {
-            menuActive : true,
+            menuActive : false,
             mobileActive : false,
             menuItems : [
                 { title : 'Dashboard', link : 'dashboard', target : '_self', icon : 'dashboard.png' },

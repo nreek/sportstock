@@ -1,7 +1,7 @@
 <template>
     <div class="create-token">
         <div class="create-token__modal-wrapper modal-shadow" :class="{ 'open' : creatingToken }"></div>
-        <div class="create-token__modal modal" :class="{ 'open' : creatingToken }">
+        <div class="create-token__modal modal" ref="modal" :class="{ 'open' : creatingToken }">
             <div class="close rounded-full border-4 border-white flex items-center justify-center" @click="$store.commit('SET_CREATE_TOKEN', false)">&times;</div>
             <div class="modal__header">
                 {{ steps[activeStep] }}
@@ -9,10 +9,10 @@
             <div class="modal__body steps" ref="steps">
 
                 <div class="step">
-                    <p class="mb-6 mt-12">We will start setting up your token, but first you will need to fill out the profile. Select the asset tokenized below:</p>
+                    <p class="mb-3 md:mb-6 md:mt-12">We will start setting up your token, but first you will need to fill out the profile. Select the asset tokenized below:</p>
 
-                    <div class="flex justify-around mb-8">
-                        <a href="javascript:void(0);" class="btn" :class="{'selected' : selected == 'player' }" @click="selected = 'player'">
+                    <div class="flex justify-around mb-8 md:flex-row flex-col">
+                        <a href="javascript:void(0);" class="btn mb-3 md:mb-0" :class="{'selected' : selected == 'player' }" @click="selected = 'player'">
                             <img src="../assets/icons/create-player.png" class="mr-3" alt="">
                             <span>Player Token</span>
                         </a>
@@ -22,8 +22,8 @@
                         </a>
                     </div>
 
-                    <div class="flex items-center">
-                        <div class="flex-1">
+                    <div class="flex items-center flex-col md:flex-row">
+                        <div class="flex-1 mb-3 md:mb-0">
                             <label for="confirm" class="coin-toggle ml-3">
                                 <input id="confirm" class="toggle-checkbox" type="checkbox">
                                 <div class="toggle-switch"></div>
@@ -33,21 +33,21 @@
                             </span>
                         </div>
 
-                        <a href="javascript:void(0);" class="button" @click="nextStep">Next Step</a>
+                        <a href="javascript:void(0);" class="button" @click="setStep('next')">Next Step</a>
                     </div>
                 </div>
 
                 <div class="step">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3 md:mb-0">
                             <label for="">Token Name</label>
                             <input type="text" placeholder="Ex.: Neymar Token">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3 md:mb-0">
                             <label for="">Token Symbol</label>
                             <input type="text" placeholder="Ex.: NJR">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3 md:mb-0">
                             <label for="">Full Name Owner</label>
                             <input type="text" placeholder="Ex.: Neymar Junior">
                         </div>
@@ -58,7 +58,7 @@
                                 <label for="">Upload your documents:</label>
                             </div>
 
-                            <div class="upload">
+                            <div class="upload p-3">
                                 <div class="placeholder flex justify-center items-center h-full cursor-pointer">
                                     <img src="../assets/icons/upload.svg" class="icon opacity-25 mr-3" alt="">
                                     <span>Click here or drag the files</span>
@@ -66,13 +66,13 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 flex items-center justify-between">
-                            <div class="flex items-center w-2/3 mr-3">
+                        <div class="col-md-12 flex items-center justify-between flex-wrap">
+                            <div class="flex items-center w-full md:w-2/3 mb-3 md:mb-0 mr-3">
                                 <img src="../assets/icons/warning-green.png" width="40" class="mr-2" alt="">
                                 <span class="fz-14 opacity-50">You must send a double-sided copy of your identification document and a selfie holding the same document next to your face.</span>
                             </div>
-                            <a href="javascript:void(0);" class="font-bold mr-3" @click="prevStep">Go Back</a>
-                            <a href="javascript:void(0);" class="button" @click="nextStep">Next Step</a>
+                            <a href="javascript:void(0);" class="font-bold mr-3" @click="setStep('back')">Go Back</a>
+                            <a href="javascript:void(0);" class="button" @click="setStep('next')">Next Step</a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,10 @@ export default {
         }
     },
     watch : {
-        creatingToken () {
+        creatingToken (newVal, oldVal) {
+            if(oldVal === false) {
+                this.$refs.steps.scrollLeft = 0;
+            }
             this.selected = this.creatingToken
         }
     },
@@ -112,14 +115,15 @@ export default {
         ...mapGetters([ 'creatingToken' ])
     },
     methods : {
-        nextStep() {
-            this.activeStep++;
+        setStep(direction) {
+            if(direction == 'next') {
+                this.activeStep++;
+            } else {
+                this.activeStep--;
+            }
+            this.$refs.modal.scrollTop = 0;
             this.$refs.steps.scrollLeft = this.$refs.steps.offsetWidth * this.activeStep;
         },
-        prevStep() {
-            this.activeStep--;
-            this.$refs.steps.scrollLeft = this.$refs.steps.offsetWidth * this.activeStep;
-        }
     }
 }
 </script>
@@ -135,6 +139,10 @@ export default {
             flex: 0 0 100%;
             max-width: 100%;
             padding: 40px;
+
+            @media screen and (max-width: 768px){
+                padding: 15px 30px;
+            }
         }
     }
 

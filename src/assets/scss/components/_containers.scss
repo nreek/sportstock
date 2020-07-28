@@ -100,10 +100,21 @@
     border-radius: 15px;
     overflow: hidden;
 
+    @include mobile {
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+        max-width: calc(100vw - 30px);
+    }
+
     &.open {
         pointer-events: all;
         opacity: 1;
         top: 50%;
+
+        @include mobile {
+            transform: translateX(-50%);
+            top: 70px;
+        }
     }
 
     .close {
