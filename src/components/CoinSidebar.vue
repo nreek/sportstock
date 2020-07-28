@@ -7,7 +7,7 @@
             <div class="user text-center p-4">
                 <img src="http://lorempixel.com/200/200/people/" width="150" height="150" alt="" class="user-picture rounded-full border-2 border-white mb-4 block mx-auto">
                 <div class="user-info">
-                    <h6 class="font-bold mb-0">James Batista</h6>
+                    <h6 class="font-bold mb-0">Carlos Silva</h6>
                     <span class="font-thin">UID: 81745</span>
                 </div>
             </div>
