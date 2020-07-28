@@ -4,7 +4,8 @@ const state = {
     loading : false,
     user : {},
     coins : [],
-    activeCoin : {}
+    activeCoin : {},
+    creatingToken : false,
 }
 
 export default state

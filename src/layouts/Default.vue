@@ -11,6 +11,7 @@
         </div>
 
         <chat></chat>
+        <CreateToken></CreateToken>
     </div>
 </template>
 

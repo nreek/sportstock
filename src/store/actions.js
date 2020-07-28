@@ -8,6 +8,9 @@ const actions = {
     setUser({ commit }, payload) {
         commit('SET_USER', payload);
     },
+    setCreateToken({ commit }, payload) {
+        commit('SET_CREATE_TOKEN', payload);
+    },
     setActiveCoin({ commit, state }, payload) {
         let coin = state.coins.find( coin => coin.name == payload )
         commit('SET_ACTIVE_COIN', coin);

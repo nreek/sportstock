@@ -27,6 +27,19 @@
                         <span v-html="item.title"></span>
                     </a>
                 </div>
+
+                <div class="main-nav__link">
+                    <a href="javascript:void(0);" @click="$store.commit('SET_CREATE_TOKEN', true)">
+                        <img class="icon" :src="require(`@/assets/icons/create-token.svg`)" alt="">
+                        <span>Create Token</span>
+                    </a>
+                </div>
+                <div class="main-nav__link">
+                    <a href="#" target="_blank">
+                        <img class="icon" :src="require(`@/assets/icons/helpdesk.png`)" alt="">
+                        <span>Helpdesk</span>
+                    </a>
+                </div>
             </nav>  
 
             <div class="flex flex-col px-5 py-6 hide-for-large">
@@ -83,11 +96,15 @@ export default {
                 { title : 'Trade', link : 'trade', target : '_self', icon : 'trade.png' },
                 { title : 'Market Cap', link : 'market-cap', target : '_self', icon : 'market-cap.svg' },
                 { title : 'History', link : 'history', target : '_self', icon : 'history.png' },
-                { title : 'Create Token', link : 'create-token', target : '_self', icon : 'create-token.svg' },
-                { title : 'Helpdesk', link : 'helpdesk', target : '_self', icon : 'helpdesk.png' },
             ]
         }
     },
+    methods: {
+        logout(){
+            window.localStorage.removeItem('token')
+            this.$router.push('/login')
+        }
+    }
 }
 </script>
 

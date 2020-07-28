@@ -16,6 +16,9 @@ const mutations = {
     },
     SET_ACTIVE_COIN (state, payload) {
         state.activeCoin = payload
+    },
+    SET_CREATE_TOKEN (state, payload) {
+        state.creatingToken = payload
     }
 }
 

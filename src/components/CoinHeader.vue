@@ -41,7 +41,6 @@
 
 export default {
     name : 'CoinHeader',
-    // components : { CardBalance },
     methods: {
         logout(){
             window.localStorage.removeItem('token')
@@ -71,8 +70,9 @@ export default {
         padding: 15px 50px 15px 30px;
         margin-bottom: 20px;
         position: fixed;
-        width: 100vw;
+        width: 1440px;
         z-index: 100;
+        max-width: 100vw;
         
         @include mobile {
             justify-content: center;
