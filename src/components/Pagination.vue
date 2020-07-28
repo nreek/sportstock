@@ -39,10 +39,18 @@ export default {
             display: flex;
             align-items: center;
             height: 54px;
-            width: 54px;
+            max-width: 54px;
+            flex: 0 0 54px;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 18px;
+
+            @include mobile {
+                font-size: 16px;
+                height: 30px;
+                max-width: 30px;
+                flex: 0 0 30px;
+            }
 
             &.current {
                 background: #1D3106;

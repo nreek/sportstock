@@ -5,7 +5,7 @@
         <section class="section-sidebar" :class="{ 'menu-active' : menuActive }" ref="sectionSidebar" @click="mobileActive = !mobileActive">
             <!-- <img src="../assets/images/toggle-menu.png" class="toggle-menu hide-for-mobile-only" @click="menuActive = !menuActive" alt=""> -->
             <div class="user text-center p-4">
-                <img src="http://lorempixel.com/200/200/people/" alt="" class="user-picture rounded-full border-2 border-white mb-4 block mx-auto">
+                <img src="http://lorempixel.com/200/200/people/" width="150" height="150" alt="" class="user-picture rounded-full border-2 border-white mb-4 block mx-auto">
                 <h6 class="font-bold mb-0">James Batista</h6>
                 <span class="font-thin">UID: 81745</span>
             </div>
@@ -14,6 +14,7 @@
                 v-for="item in menuItems" 
                 :key="item.link"
                 class="main-nav__link" 
+                @click="menuActive = false"
                 >
                     <router-link v-if="item.target == '_self'" :to="`/${item.link}`">
                         <img class="icon" :src="require(`@/assets/icons/${item.icon}`)" alt="">
@@ -25,6 +26,21 @@
                     </a>
                 </div>
             </nav>  
+
+            <div class="help px-5 py-6">
+                <span>Need help?</span>
+                <a class="text-green block mb-4" href="mailto:support@usdsoccer.io">support@usdsoccer.io</a>
+
+                <a href="#" target="_blank" class="help-link">Customer Agreement</a>
+                <a href="#" target="_blank" class="help-link">Order Execution Policy</a>
+                <a href="#" target="_blank" class="help-link">Summary of Conflicts</a>
+                <a href="#" target="_blank" class="help-link">API Documentation</a>
+                <a href="#" target="_blank" class="help-link">Privacy Policy</a>
+                <a href="#" target="_blank" class="help-link">AML & KYC Policy</a>
+                <a href="#" target="_blank" class="help-link">Cookie Policy</a>
+                <a href="#" target="_blank" class="help-link">Risk Disclousure</a>
+                <a href="#" target="_blank" class="help-link">API Agreement</a>
+            </div>
 
         </section>
         </div>
@@ -38,7 +54,7 @@ export default {
             menuActive : true,
             mobileActive : false,
             menuItems : [
-                { title : 'Dashboard', link : '', target : '_self', icon : 'dashboard.png' },
+                { title : 'Dashboard', link : 'dashboard', target : '_self', icon : 'dashboard.png' },
                 { title : 'My Profile', link : 'profile', target : '_self', icon : 'profile.png' },
                 { title : 'Portfolio', link : 'portfolio', target : '_self', icon : 'portfolio.png' },
                 { title : 'Trade', link : 'trade', target : '_self', icon : 'trade.png' },
@@ -64,6 +80,19 @@ export default {
     .user {
         background-image: url('../assets/images/sidebar-bg.png');
         background-size: cover;
+    }
+
+    .help {
+        * { 
+            font-size: 14px;
+            display: block;
+            margin-bottom: 7px;
+        }
+    }
+
+    .help-link {
+        color: #C2DDA3 !important;
+        letter-spacing: 0.2px;
     }
 
     .close {

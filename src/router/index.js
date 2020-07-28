@@ -11,6 +11,11 @@ const routes = [
     component: Dashboard
   },
   {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
+  },
+  {
     path: '/wallets',
     name: 'Wallets',
     component: () => import('../views/Wallets.vue')
@@ -24,6 +29,11 @@ const routes = [
     path: '/wallets/withdraw/:coin',
     name: 'WalletsWithdraw',
     component: () => import('../views/WalletsWithdraw.vue')
+  },
+  {
+    path: '/wallets/deposit/:coin',
+    name: 'WalletsDeposit',
+    component: () => import('../views/WalletsDeposit.vue')
   },
   {
     path: '/market-cap',

@@ -14,6 +14,10 @@
     img {
         margin-right: 15px;
         width: 30px;
+
+        @include mobile{
+            width: 22px;
+        }
     }
 }
 
@@ -30,6 +34,10 @@
     
     @include desktop { 
         height: 100%;
+    }
+
+    @include mobile {
+        max-width: calc(100vw - 40px);
     }
 
     &.small {

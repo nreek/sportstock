@@ -7,17 +7,17 @@
 
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <input type="text" class="portfolio-input" placeholder="Search">
             </div>
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <select name="" id="" class="portfolio-input">
                     <option value="" selected>Filter</option>
                 </select>
             </div>
 
             <div class="col-md-3 flex items-center">
-                <label for="ga-active" class="coin-toggle ml-3">
+                <label for="ga-active" class="coin-toggle mt-3 md:mt-0 md:ml-3">
                     <input id="ga-active" class="toggle-checkbox" type="checkbox">
                     <div class="toggle-switch"></div>
 

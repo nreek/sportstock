@@ -7,12 +7,26 @@
             <img :src="require('@/assets/images/logo-decor.png')" alt="" class="decor show-for-large-only">
         </router-link>
         
-        <div class="d-flex">
+        <div class="d-flex flex-1 ml-5">
             <!-- <div class="toggle-theme"  @click="$store.commit('TOGGLE_THEME')">
                 <img src="../assets/icons/toggle-dark.png" class="icon" alt="" width="20">
                 <div class="toggle-theme__toggler"></div>
                 <img src="../assets/icons/toggle-light.png" class="icon" alt="" width="27">
             </div> -->
+
+            <div class="flex-1 hide-for-mobile-only">
+                <input type="text" class="search" placeholder="Search for...">
+            </div>
+
+            <router-link to="/wallets/deposit/BTC" class="logout text-green">
+                <img src="../assets/icons/deposit-usdsc.png" class="mr-2" width="22" alt="">
+                Deposit USDSC
+            </router-link>
+
+            <router-link to="/wallets/withdraw/BTC" class="logout text-red">
+                <img src="../assets/icons/withdraw-usdsc.png" class="mr-2" width="22" alt="">
+                Withdraw USDSC
+            </router-link>
 
             <router-link to="/login" class="logout" @click="logout">
                 <img src="../assets/icons/logout.png" class="icon mr-2" width="16" alt="">
@@ -64,6 +78,22 @@ export default {
     }
 
     .logo-wrapper { position: relative; }
+
+    .search {
+        width: 100%;
+        outline: none;
+        padding: 10px;
+        max-width: 100% !important;
+        font-weight: bold;
+        border: none;
+        font-size: 17px;
+        letter-spacing: 1px;
+
+        &::placeholder {
+            opacity: 0.4;
+            font-weight: 500;
+        }
+    }
 
     .decor{
         position: absolute;
