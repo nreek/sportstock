@@ -73,6 +73,12 @@ const routes = [
     meta : { layout : 'auth' },
     component: () => import('../views/Password.vue')
   },
+  {
+    path: '/trade',
+    name: 'Trade',
+    meta : { layout : 'trade' },
+    component: () => import('../views/Trade.vue')
+  },
 ]
 
 const router = new VueRouter({

@@ -9,12 +9,14 @@
 <script>
 import Default from '@/layouts/Default';
 import Auth from '@/layouts/Auth';
+import Trade from '@/layouts/Trade';
 
 export default {
     name: 'Home',
     components: {
         Default,
         Auth,
+        Trade
     },
     computed : {
         layout() {

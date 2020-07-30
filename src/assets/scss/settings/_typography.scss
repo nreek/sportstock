@@ -28,6 +28,12 @@ a, a:hover { text-decoration: none; }
     }
 }
 
+@each $size in (9,10,11,12,13,14,15,16,17,18,19,20,21,22) {
+    .fz-#{$size} {
+        font-size: #{$size}px !important;
+    }
+}
+
 .fz-16, .fz-16 * {
     font-size: 16px !important;
 }
