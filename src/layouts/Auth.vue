@@ -55,6 +55,12 @@ export default {
                 height: 50px;
             }
 
+            @media screen and (max-width: 768px) {
+                button.btn-auth {
+                    margin-left: 7.5px;
+                }
+            }
+
             .btn-auth {
                 height: 50px;
                 width: 133px;
@@ -69,6 +75,12 @@ export default {
                 font-weight: bold;
                 font-size: 14px;
                 color: white;
+
+                @media screen and (max-width: 768px) {
+                    max-width: calc(50% - 16px);
+
+                    &:last-child { margin-right: 0; }
+                }
                 
                 &:hover { color: white !important }
 
@@ -92,6 +104,10 @@ export default {
         padding-bottom: 20px;
         max-height: 90vh;
         overflow-x: auto;
+
+        @media screen and (max-width: 768px) {
+            width: calc(100% - 30px);
+        }
 
         .auth-header {
             display: flex;
