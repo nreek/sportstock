@@ -80,6 +80,22 @@
     list-style: none;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
+
+    li { order: 1; }
+    li[type="All"] { order: 0; }
+
+    @include mobile { 
+        justify-content: space-between;
+
+        li { 
+            flex: 0 0 calc(50% - 10px);
+            width: calc(50% - 10px);
+            margin-bottom: 10px;
+
+            a { margin-right: 0 !important; }
+        }
+    } 
 
     li a{
         margin-right: 15px;

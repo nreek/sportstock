@@ -3,7 +3,7 @@
         <!-- <CardBalance></CardBalance> -->
         <router-link to="/" class="d-flex logo-wrapper"> 
             <img alt="Logo" class="logo hide-for-mobile-only" :src="require(`@/assets/images/logo-dark.png`)">
-            <img alt="Logo" class="show-for-mobile-only" :src="require(`@/assets/images/logo-dark.png`)" width="130">
+            <img alt="Logo" class="logo-mobile show-for-mobile-only" :src="require(`@/assets/images/logo-dark.png`)" width="130">
             <img :src="require('@/assets/images/logo-decor.png')" alt="" class="decor show-for-large-only">
         </router-link>
         
@@ -59,6 +59,8 @@ export default {
         transition: none;
         transform: translateX(-10px);
     }
+
+    .logo-mobile { height: 33.5px !important; max-height: 33.5px !important; }
 
     .section-header {
         grid-area: header;

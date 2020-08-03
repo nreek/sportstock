@@ -28,13 +28,13 @@
                     </a>
                 </div>
 
-                <div class="main-nav__link">
+                <div class="main-nav__link" @click="menuActive = false">
                     <a href="javascript:void(0);" @click="$store.commit('SET_CREATE_TOKEN', true)">
                         <img class="icon" :src="require(`@/assets/icons/create-token.svg`)" alt="">
                         <span>Create Token</span>
                     </a>
                 </div>
-                <div class="main-nav__link">
+                <div class="main-nav__link" @click="menuActive = false">
                     <a href="#" target="_blank">
                         <img class="icon" :src="require(`@/assets/icons/helpdesk.png`)" alt="">
                         <span>Helpdesk</span>

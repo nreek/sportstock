@@ -67,6 +67,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* https://grid.layoutit.com/?id=ZmUKlRB */
+
 .grid-container {
     min-height: 100vh;
     padding: 10px;

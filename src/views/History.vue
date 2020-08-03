@@ -8,14 +8,14 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="pills mb-4">
-                    <li v-for="{ type, index } in types" :key="index">
+                    <li v-for="{ type, index } in types" :key="index" :type="type">
                         <a href="javascript:void(0);" :class="{ 'active' : index == activeType }" @click="activeType = index">{{ type }}</a>
                     </li>
                 </ul>
 
                 <template v-if="!history">
-                    <div class="card h-auto mb-3" v-for="i in [1,2,3,4,5,6]" v-bind:key="i">
-                        <vue-content-loading :width="900" :height="89" :speed="2" primary="#2a1840" secondary="#1f1234">
+                    <div class="card h-auto mb-3" style="min-width: calc(100vw / 2); transition: all .6s" v-for="i in [1,2,3,4,5,6]" v-bind:key="i">
+                        <vue-content-loading :width="900" :height="89" :speed="2" primary="#233a09" secondary="#304f0e">
                             <rect x="69" y="22" rx="3" ry="3" width="25" height="23" /> 
                             <rect x="69" y="60" rx="3" ry="3" width="85" height="8" /> 
                             <rect x="65" y="169" rx="3" ry="3" width="178" height="6" /> 

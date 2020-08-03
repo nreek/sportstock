@@ -11,15 +11,19 @@
                 <div class="step">
                     <p class="mb-3 md:mb-6 md:mt-12">We will start setting up your token, but first you will need to fill out the profile. Select the asset tokenized below:</p>
 
-                    <div class="flex justify-around mb-8 md:flex-row flex-col">
-                        <a href="javascript:void(0);" class="btn mb-3 md:mb-0" :class="{'selected' : selected == 'player' }" @click="selected = 'player'">
-                            <img src="../assets/icons/create-player.png" class="mr-3" alt="">
-                            <span>Player Token</span>
-                        </a>
-                        <a href="javascript:void(0);" class="btn" :class="{'selected' : selected == 'team' }" @click="selected = 'team'">
-                            <img src="../assets/icons/create-team.png" class="mr-3" alt="">
-                            <span>Team Token</span>
-                        </a>
+                    <div class="flex justify-around mt-6 mb-5 md:flex-row flex-col">
+                        <div class="btn-gradient-wrapper mb-3 md:mb-0" :class="{'selected' : selected == 'player' }">
+                            <a href="javascript:void(0);" class="btn" @click="selected = 'player'">
+                                <img src="../assets/icons/create-player.png" class="mr-3" alt="">
+                                <span>Player Token</span>
+                            </a>
+                        </div>
+                        <div class="btn-gradient-wrapper mb-3 md:mb-0" :class="{'selected' : selected == 'team' }">
+                            <a href="javascript:void(0);" class="btn" :class="{'selected' : selected == 'team' }" @click="selected = 'team'">
+                                <img src="../assets/icons/create-team.png" class="mr-3" alt="">
+                                <span>Team Token</span>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="flex items-center flex-col md:flex-row">
@@ -177,9 +181,19 @@ export default {
         outline: none;
     }
 
-    .btn{
+    .btn-gradient-wrapper {
+        padding: 1.5px 2px;
+        border-radius: 9px;
         flex: 0 0 calc(50% - 30px);
-        border: 2px solid #2F5009;
+        max-width: calc(50% - 30px);
+        background: #2F5009;
+
+        &.selected {
+            background: linear-gradient(90deg, #F23345 0%, #2CDB00 100%);
+        }
+    }
+
+    .btn{
         border-radius: 9px;
         padding: 18px;
         font-size: 29px;
@@ -187,7 +201,10 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-
+        background: #142303;
+        height: 100%;
+        width: 100%;
+        
         &.selected {
             border-color: #F59223;
         }
