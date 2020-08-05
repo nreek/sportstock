@@ -122,6 +122,12 @@ export default {
 .orders { grid-area: orders; }
 .buy { grid-area: buy; }
 
+@media screen and (max-width: 768px) {
+    .team-players {
+        min-height: 400px;
+    }
+}
+
 .news-wrapper {
     background: transparent;
 }
