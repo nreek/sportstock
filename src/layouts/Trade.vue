@@ -1,17 +1,35 @@
 <template>
-    <div style="padding-top: 90px">
+    <div class="trade-wrapper">
         <section class="section-header">
+            <img src="../assets/icons/menu.png" class="show-for-mobile-only icon close" alt="Open menu" @click="menuActive = !menuActive" width="25">
             <!-- <CardBalance></CardBalance> -->
             <router-link to="/" class="flex items-center logo-wrapper"> 
                 <img alt="Logo" class="logo hide-for-mobile-only" :src="require(`@/assets/images/logo-dark.png`)">
                 <img alt="Logo" class="show-for-mobile-only" :src="require(`@/assets/images/logo-dark.png`)" width="130">
             </router-link>
 
-            <div class="flex-1">
+            <div class="flex-1 menu-mobile" :class="{ 'active' : menuActive }">
                 <a href="#" style="letter-spacing: 2px" class="uppercase ml-3 fz-12 font-thin text-green">Live Trade</a>
                 <a href="#" style="letter-spacing: 2px" class="uppercase ml-3 fz-12 font-thin ">My Portfolio</a>
                 <a href="#" style="letter-spacing: 2px" class="uppercase ml-3 fz-12 font-thin ">Markets</a>
                 <a href="#" style="letter-spacing: 2px" class="uppercase ml-3 fz-12 font-thin ">Create your token</a>
+
+                <div class="d-flex ml-3 border-t pt-3 border-green-700 show-for-mobile-only">
+                    <router-link to="/wallets/deposit/BTC" class="flex items-center mr-5 text-green">
+                        <!-- <img src="../assets/icons/deposit-usdsc.png" class="mr-2" width="22" alt=""> -->
+                        Deposit USDSC
+                    </router-link>
+
+                    <router-link to="/wallets/withdraw/BTC" class="flex items-center mr-5 text-red">
+                        <!-- <img src="../assets/icons/withdraw-usdsc.png" class="mr-2" width="22" alt=""> -->
+                        Withdraw USDSC
+                    </router-link>
+
+                    <router-link to="/login" class="flex items-center mr-5">
+                        <img src="../assets/icons/logout.png" class="icon mr-2" width="16" alt="">
+                        Logout
+                    </router-link>
+                </div>
             </div>
             
             <div class="d-flex ml-5 hide-for-mobile-only">
@@ -55,6 +73,7 @@
 export default {
     data () {
         return {
+            menuActive : false,
             coins : [ 'NJR', 'AMJ', 'PBR', 'BLC', 'BJU', 'PAL', 'COR', 'PTX','NJR', 'AMJ', 'PBR', 'BLC', 'BJU', 'PAL', 'COR', 'PTX','NJR', 'AMJ', 'PBR', 'BLC', 'BJU', 'PAL', 'COR', 'PTX','NJR', 'AMJ', 'PBR', 'BLC', 'BJU', 'PAL', 'COR', 'PTX']
         }
     },
@@ -112,6 +131,41 @@ export default {
     @import '@/assets/scss/settings/_variables.scss';
     @import '@/assets/scss/settings/_mixins.scss';
 
+    .trade-wrapper {
+        padding-top: 90px;
+
+        @include mobile {
+            padding-top: 70px;
+        }
+    }
+
+    .icon.close {  
+        left: 20px;
+        position: fixed;
+    }
+
+    .menu-mobile {
+        @include mobile {
+            position: fixed;
+            width: 60vw;
+            flex-direction: column;
+            display: flex;
+            top: 53px;
+            padding: 20px 20px 20px 8px;
+            background: #31510d;
+            height: calc(100vh - 53px);
+            box-shadow: 40vw 0 0 #0000003b;
+            transition: all .6s;
+            left: -100vw;
+            opacity: 0;
+
+            &.active { left: 0; opacity: 1; }
+
+
+            a { margin-bottom: 20px; }
+        }
+    }
+
     .logo { 
         width: 210px;
         transition: none;
@@ -131,6 +185,7 @@ export default {
         width: 100vw;
         z-index: 100;
         max-width: 100vw;
+        box-shadow: 0 0 30px rgba(0,0,0,0.2);
         
         @include mobile {
             justify-content: center;

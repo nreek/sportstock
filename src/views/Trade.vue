@@ -1,13 +1,15 @@
 <template>
-    <div class="trade">
+    <div class="trade overflow-y-auto">
         <div class="grid-container">
             <div class="grid-cell graph">
                 <img src="../assets/images/graph.png" style="height: 100%; width: 100%; object-fit: contain" alt="">
             </div>
-            <div class="grid-cell sell">
+            <div class="grid-cell sell overflow-y-auto">
                 <TradeBuySell action="buy"></TradeBuySell>
             </div>
-            <div class="grid-cell teams-players"></div>
+            <div class="grid-cell teams-players  overflow-y-auto">
+                <TeamPlayerTabs></TeamPlayerTabs>
+            </div>
             <div class="grid-cell news-wrapper">
                 <News></News>
             </div>
@@ -48,7 +50,7 @@
             <div class="grid-cell orders">
                 <TradeOrders></TradeOrders>
             </div>
-            <div class="grid-cell buy">
+            <div class="grid-cell buy overflow-y-auto">
                 <TradeBuySell action="sell"></TradeBuySell>
             </div>
         </div>
@@ -60,9 +62,10 @@ import Crowdfunding from '@/components/Crowdfunding'
 import News from '@/components/News'
 import TradeBuySell from '@/components/TradeBuySell'
 import TradeOrders from '@/components/TradeOrders'
+import TeamPlayerTabs from '@/components/TeamPlayerTabs'
 
 export default {
-    components: { Crowdfunding, News, TradeBuySell, TradeOrders },
+    components: { Crowdfunding, News, TradeBuySell, TradeOrders, TeamPlayerTabs },
 }
 </script>
 
@@ -83,6 +86,27 @@ export default {
             "orders buy sell teams-players" 
             "orders buy sell news" 
             "crowd-funding my-orders my-orders news";
+
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+
+        > div {
+            flex: 0 0 100%;
+            max-width: 100%;
+            order: 10;
+        }
+
+        .news {
+            max-width: 100%;
+            order: 11;
+        }
+
+        .graph { order: 0 }
+        .orders { order: 1 }
+        .sell { order: 2 }
+        .buy { order: 3 }
+    }
 }
 
 .grid-cell {
