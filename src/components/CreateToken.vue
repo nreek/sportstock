@@ -12,14 +12,14 @@
                     <p class="mb-3 md:mb-6 md:mt-12">We will start setting up your token, but first you will need to fill out the profile. Select the asset tokenized below:</p>
 
                     <div class="flex justify-around mt-6 mb-5 md:flex-row flex-col">
-                        <div class="btn-gradient-wrapper mb-3 md:mb-0" :class="{'selected' : selected == 'player' }">
-                            <a href="javascript:void(0);" class="btn" @click="selected = 'player'">
+                        <div class="btn-gradient-wrapper mb-3 md:mb-0" :class="{'selected' : register.type == 1 }">
+                            <a href="javascript:void(0);" class="btn" @click="register.type = 1">
                                 <img src="../assets/icons/create-player.png" class="mr-3" alt="">
                                 <span>Player Token</span>
                             </a>
                         </div>
-                        <div class="btn-gradient-wrapper mb-3 md:mb-0" :class="{'selected' : selected == 'team' }">
-                            <a href="javascript:void(0);" class="btn" :class="{'selected' : selected == 'team' }" @click="selected = 'team'">
+                        <div class="btn-gradient-wrapper mb-3 md:mb-0" :class="{'selected' : register.type == 2 }">
+                            <a href="javascript:void(0);" class="btn" :class="{'selected' : register.type == 2 }" @click="register.type = 2">
                                 <img src="../assets/icons/create-team.png" class="mr-3" alt="">
                                 <span>Team Token</span>
                             </a>
@@ -43,40 +43,60 @@
 
                 <div class="step">
                     <div class="row">
-                        <div class="col-md-4 mb-3 md:mb-0">
-                            <label for="">Token Name</label>
-                            <input type="text" placeholder="Ex.: Neymar Token">
+                        <div class="col-md-6 mb-3 md:mb-0">
+                            <label for="" class="block">Token Name</label>
+                            <input type="text" v-model="register.name" placeholder="Ex.: Neymar Token" style="max-width: 100%">
                         </div>
-                        <div class="col-md-4 mb-3 md:mb-0">
-                            <label for="">Token Symbol</label>
-                            <input type="text" placeholder="Ex.: NJR">
+                        <div class="col-md-6 mb-3 md:mb-0">
+                            <label for="" class="block">Token Symbol</label>
+                            <input type="text" v-model="register.symbol" placeholder="Ex.: NJR" style="max-width: 100%">
                         </div>
-                        <div class="col-md-4 mb-3 md:mb-0">
-                            <label for="">Full Name Owner</label>
-                            <input type="text" placeholder="Ex.: Neymar Junior">
+                        <div class="col-md-6 mb-3 md:mb-0">
+                            <label for="" class="block">Description</label>
+                            <input type="text" v-model="register.description" style="max-width: 100%">
+                        </div>
+                        <div class="col-md-6 mb-3 md:mb-0">
+                            <label for="" class="block">Full Name Owner</label>
+                            <input type="text" v-model="register.full_name" placeholder="Ex.: Neymar Junior" style="max-width: 100%">
                         </div>
 
-                        <div class="col-md-12 mt-4 mb-8">
-                            <div class="flex items-center mb-3">
+                        <div class="col-md-12 flex items-center justify-between flex-wrap">
+                            <a href="javascript:void(0);" class="font-bold mr-3" @click="setStep('back')">Go Back</a>
+                            <a href="javascript:void(0);" class="button" @click="registerToken">Next Step</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="row">
+                         <div class="col-md-12">
+                            <div class="flex items-center mb-1">
                                 <img src="../assets/icons/upload.png" width="25" class="mr-2" alt="">
-                                <label for="">Upload your documents:</label>
+                                <label for="" class="font-bold">Upload your documents:</label>
                             </div>
 
-                            <div class="upload p-3">
+                            <!-- <div class="upload p-3">
                                 <div class="placeholder flex justify-center items-center h-full cursor-pointer">
                                     <img src="../assets/icons/upload.svg" class="icon opacity-25 mr-3" alt="">
                                     <span>Click here or drag the files</span>
                                 </div>
+                            </div> -->
+                        </div>
+                        <div class="document-type text-center col-md-6" v-for="document in documentTypes" :key="document.id">
+                            <div class="upload">
+                                <label for="" v-html="document.name"></label>
+                                <p v-html="document.description"></p>
+                                <img :src="document.image_example" alt="" class="block m-auto mb-2">
+                                <input type="file" :name="document.type" @change="(event) => documentChange(event.target.files, document)">
                             </div>
                         </div>
-
-                        <div class="col-md-12 flex items-center justify-between flex-wrap">
+                        <div class="col-md-12 mt-8 flex items-center justify-between flex-wrap">
                             <div class="flex items-center w-full md:w-2/3 mb-3 md:mb-0 mr-3">
                                 <img src="../assets/icons/warning-green.png" width="40" class="mr-2" alt="">
                                 <span class="fz-14 opacity-50">You must send a double-sided copy of your identification document and a selfie holding the same document next to your face.</span>
                             </div>
                             <a href="javascript:void(0);" class="font-bold mr-3" @click="setStep('back')">Go Back</a>
-                            <a href="javascript:void(0);" class="button" @click="setStep('next')">Next Step</a>
+                            <a href="javascript:void(0);" class="button" @click="documentStore">Next Step</a>
                         </div>
                     </div>
                 </div>
@@ -94,6 +114,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import api from '@/api'
+
 export default {
     name : 'CreateToken',
     data(){
@@ -104,7 +126,16 @@ export default {
                 'STEP 03/03 - TOKEN CONFIRMATION',
             ],
             activeStep : 0,
-            selected : ''
+            register : {
+                type : '1',
+                name : 'neymar jr',
+                symbol : 'njr',
+                full_name : 'neymar_jr',
+                description : 'desc do neymar jr',
+            }, 
+            documents : [],
+            token : false,
+            documentTypes : false
         }
     },
     watch : {
@@ -112,11 +143,14 @@ export default {
             if(oldVal === false) {
                 this.$refs.steps.scrollLeft = 0;
             }
-            this.selected = this.creatingToken
+            this.register.type = this.creatingToken
         }
     },
     computed : {
         ...mapGetters([ 'creatingToken' ])
+    },
+    async mounted () {
+        this.documentTypes = await api.get(`document-types/token`)
     },
     methods : {
         setStep(direction) {
@@ -128,6 +162,37 @@ export default {
             this.$refs.modal.scrollTop = 0;
             this.$refs.steps.scrollLeft = this.$refs.steps.offsetWidth * this.activeStep;
         },
+        async registerToken() {
+            this.token = await api.post('token/register', this.register)
+
+            if(this.token && this.token.id) {
+                this.setStep('next')
+            }
+        },
+        documentChange(file, document) {
+            // this.documents = [...this.documents, { document : , document_type_id : document.id, currency_id : this.token.id } ]
+            let headers = { "Content-Type" : 'application/x-www-form-urlencoded', "Accept" : 'application/json', "Authorization": `Bearer ${window.localStorage.getItem('token')}`, "mimeType": 'multipart/form-data' }
+            let proxyUrl = 'https://afternoon-beyond-74473.herokuapp.com/'
+            let form = new FormData();
+
+            form.append('document', file[0]);
+            form.append('document_type_id', document.id);
+            form.append('currency_id', this.token.id);
+
+            fetch(proxyUrl + 'https://dev.usdsoccer.io/api/document/store', {
+                method: 'POST',
+                headers,
+                body: form,
+                redirect: 'follow'
+            })
+            .then( response => { 
+                response.json().then( data => console.log(data) )
+            })
+            .catch( response => console.log(response))
+        },
+        async documentStore () {
+            
+        }
     }
 }
 </script>
@@ -154,7 +219,7 @@ export default {
         border-radius: 9px;
         border: 1px solid rgba(255,255,255,0.21);
         width: 100%;
-        height: 140px;
+        padding: 15px;
         background-image: linear-gradient(45deg, rgba(255,255,255, 0.02) 25%, transparent 25%), linear-gradient(-45deg, rgba(255,255,255, 0.02) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255,255,255, 0.02) 75%), linear-gradient(-45deg, transparent 75%, rgba(255,255,255, 0.02) 75%);
         background-size: 20px 20px;
         background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
@@ -256,5 +321,13 @@ export default {
             background-color: #142303;
             font-size: 19px;
         }
+    }
+
+    .document-type {
+        p, input {
+            font-size: 14px;
+        }
+
+        img { max-height: 250px; }
     }
 </style>

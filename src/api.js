@@ -10,10 +10,10 @@ class API {
 
     request (url, method, params) {
         if( window.localStorage.getItem('token') ) {
-            this.headers = { ...this.headers, "Authorization": `Bearer ${window.localStorage.getItem('token')}` }
+            this.headers = { ...this.headers, "Authorization": `Bearer ${window.localStorage.getItem('token')}`, 'Content-Type' : this.contentType, "mimeType": 'multipart/form-data' }
         }
 
-        const data = { ...this.body,  ...params}
+        const data = { ...this.body,  ...params }
         
         var formBody = this.getFormBody(data)
 
@@ -73,7 +73,8 @@ const oauth_body = {
     "scope" : "*"
 }
 
-const api  = new API(`http://mockaltcoin.altcoinlab.io/api/`, oauth_headers)
-export const oauth = new API(`http://mockaltcoin.altcoinlab.io/oauth`, oauth_headers, oauth_body)
-export const openAPI = new API(`http://mockaltcoin.altcoinlab.io/api/`, {}, {}, 'multipart/form-data')
+const api  = new API(`https://dev.usdsoccer.io/api/`, oauth_headers )
+export const api_form  = new API(`https://dev.usdsoccer.io/api/`, oauth_headers, {}, 'multipart/form-data' )
+export const oauth = new API(`https://dev.usdsoccer.io/oauth`, oauth_headers, oauth_body)
+export const openAPI = new API(`https://dev.usdsoccer.io/api/`, { "Accept" : 'application/json' }, {}, 'multipart/form-data')
 export default api

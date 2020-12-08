@@ -15,7 +15,7 @@
             </div> -->
 
             <div class="flex-1">
-                <input type="text" class="search" placeholder="Search for...">
+                <!-- <input type="text" class="search" placeholder="Search for..."> -->
             </div>
 
             <router-link to="/wallets/deposit/BTC" class="logout text-green">

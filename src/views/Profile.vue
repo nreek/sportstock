@@ -10,17 +10,10 @@
                 <div class="card">
                     <div class="card__header justify-content-start always-horizontal">
                         <img src="../assets/icons/person.png" width="24" class="icon mr-2" alt="">
-                        <h6 class="op-50 mb-0">menders@altcoinlab.io</h6>
+                        <h6 class="op-50 mb-0">{{ user.email }}</h6>
                     </div>
-                    <div class="card__body mt-5 d-flex">
-                        <div>
-                            <span class="d-block">Password: </span>
-                            <span>•••••••••••••••••••</span>
-                        </div>
-                        <div class="align-items-center d-flex ml-4">
-                            <img src="../assets/icons/edit.png" width="17" class="mr-2 icon" alt="">
-                            <router-link to="/profile/change-password" class="">Change Password</router-link>
-                        </div>
+                    <div class="card__body mt-5">
+                        <UserPassword></UserPassword>
                     </div>
                 </div>
             </div>
@@ -82,9 +75,9 @@
                                 <p class="m-0 mb-2">Birthday: </p>
                             </div>
                             <div class="col-6 col-md-2 pl-0">
-                                <p class="m-0 mb-2">Rafael</p>
-                                <p class="m-0 mb-2">Mendes</p>
-                                <p class="m-0 mb-2">20/06/1986</p>
+                                <p class="m-0 mb-2">{{ user.first_name }}</p>
+                                <p class="m-0 mb-2">{{ user.last_name }}</p>
+                                <p class="m-0 mb-2">{{ user.dob ? formatDate(user.dob) : '' }}</p>
                             </div>
                             <div class="col-6 col-md-2 pr-0">
                                 <p class="m-0 mb-2">Country: </p>
@@ -92,9 +85,9 @@
                                 <p class="m-0 mb-2">Zipcode: </p>
                             </div>
                             <div class="col-6 col-md-5 pl-0">
-                                <p class="m-0 mb-2">Brazil</p>
-                                <p class="m-0 mb-2">+55 11 90356-4324 <img src="../assets/icons/verified.png" width="28" class="hide-for-mobile-only" alt=""></p>
-                                <p class="m-0 mb-2">20061986</p>
+                                <p class="m-0 mb-2">{{ user.country.join(',') }}</p>
+                                <p class="m-0 mb-2">{{ user.cellphone }} <img v-if="user.cellphone" src="../assets/icons/verified.png" width="28" class="hide-for-mobile-only" alt=""></p>
+                                <p class="m-0 mb-2">{{ user.zipcode }}</p>
                             </div>
                         </div>
                     </div>
@@ -114,7 +107,7 @@
                 </div>
             </div>
 
-            <div class="col-md-12 my-4">
+            <!-- <div class="col-md-12 my-4">
                 <div class="card">
                     <div class="card__header justify-content-start always-horizontal">
                         <span>Logs</span>
@@ -147,19 +140,30 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { formatDistance, parse } from 'date-fns'
+import UserPassword from '@/components/UserPassword'
 
 export default {
     name: 'Profile',
-    components: {},
+    components: { UserPassword },
     data() {
         return {}
     },
+    computed : {
+        ...mapGetters({ user : 'user' })
+    },
+    methods : {
+        formatDate(date) {
+            return formatDistance(new Date(), parse(date, 'yyyy-MM-dd', new Date()))
+        }
+    }
 }
 </script>
 

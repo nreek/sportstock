@@ -1,5 +1,5 @@
 <template>
-    <div class="market-cap page-container">
+    <div class="market-cap page-container w-full">
         <h2 class="page-title mb-5">
             <img src="../assets/icons/market-cap.png" class="icon" alt="">
             Market Cap
@@ -8,8 +8,8 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="pills">
-                    <li v-for="(type, index) in ['Soccer Team', 'Soccer Players']" :key="index">
-                        <a href="javascript:void(0);" :class="{ 'active' : index == activeType }" @click="activeType = index">{{ type }}</a>
+                    <li v-for="(type, index) in ['players', 'teams']" :key="index">
+                        <a href="javascript:void(0);" :class="{ 'active' : type == activeType }" @click="activeType = type">{{ typeTitle[type] }}</a>
                     </li>
                 </ul>
             </div>
@@ -30,24 +30,24 @@
                                     <th>Volume (24h)</th>
                                     <th> Circulating Supply</th>
                                     <th>Change(24h)</th>
-                                    <th>Price Graph (7d)</th>
+                                    <!-- <th>Price Graph (7d)</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(name, index) in teams" :key="index">
+                                <tr v-for="(type, index) in records[activeType]" :key="index">
                                     <td class="text-center">{{ index }}</td>
                                     <td style="min-width: 120px;">
                                         <div class="flex items-center">
-                                            <img src="../assets/images/team-logo.png" alt="" class="mr-2">
-                                            <span class="text-bold">{{ name }}</span>
+                                            <img v-if="type.image" :src="type.image" alt="" class="mr-2">
+                                            <span class="text-bold">{{ type.name }}</span>
                                         </div>
                                     </td>
-                                    <td>$1{{ index }}2,2{{ index }}7,601.{{index}}8</td>
-                                    <td>${{index}},457.89</td>
-                                    <td>$17,009,569.98</td>
-                                    <td>${{index * 3}}{{index}}.458.17{{index}}BTC</td>
-                                    <td :class=" index % 3 != 1 ? 'text-green' : 'text-red'">0,{{ index * 2 }}{{ index }}%</td>
-                                    <td>
+                                    <td>0</td>
+                                    <td>{{ type.current_price_usdc || 0 }}</td>
+                                    <td>{{ type.available }}</td>
+                                    <td>0 </td>
+                                    <td>{{ type.current_cap }}</td>
+                                    <!-- <td>
                                         <trend
                                         :data="[0, 2, 5, 9, 5, index * 10, 3, 5, 0, 0, 1, index*8, 2, 9, 0]"
                                         gradientDirection="right"
@@ -58,7 +58,7 @@
                                         auto-draw
                                         smooth>
                                         </trend>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </tbody>
                         </table>
@@ -70,42 +70,40 @@
 </template>
 
 <script>
+import api from '@/api'
+
 export default {
     name: 'History',
     components: {},
     data() {
         return {
-            teams : ['Paraná', 'Cruzeiro', 'Palmeiras', 'Criciuma', 'São Bento', 'Real Madrid', 'Barcelona'],
-            activeType : 0,
+            records : { teams : [], players : [] },
+            activeType : 'players',
+            typeTitle : { teams : 'Teams', players : 'Players' }
         }
     },
     mounted () {
-        this.teams.map( (x, index) => {
+        api.get('team-market-cap/1').then(data => {
+            this.records.players = data
+        })
+        api.get('team-market-cap/2').then(data => {
+            this.records.teams = data
+        })
+
+        /*this.teams.map( (x, index) => {
             const opts = {
                 width : 170,
                 height : 50,
                 class: "spark",
-                cursor: {
-                    show: false
-                },
-                select: {
-                    show: false,
-                },
-                legend: {
-                    show: false,
-                },
+                cursor: { show: false },
+                select: { show: false },
+                legend: { show: false },
                 scales: {
-                    x: {
-                        time: false,
-                    },
+                    x: { time: false },
                 },
                 axes: [
-                    {
-                        show: false,
-                    },
-                    {
-                        show: false,
-                    }
+                    { show: false, },
+                    { show: false, }
                 ],
                 series: [
                     {},
@@ -124,7 +122,7 @@ export default {
             can.style.height = "50px";
             
             document.getElementById(`spark-${index}`).appendChild(can)
-        })
+        })*/
     }
 }
 </script>
@@ -134,6 +132,7 @@ export default {
     @import '@/assets/scss/settings/_mixins.scss';
 
     .market-cap {
+        .card { height: auto !important; }
         .pills { 
             margin-left: 20px;
             

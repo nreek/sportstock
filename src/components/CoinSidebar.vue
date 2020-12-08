@@ -4,11 +4,11 @@
 
         <section class="section-sidebar" :class="{ 'menu-active' : menuActive }" ref="sectionSidebar">
             <!-- <img src="../assets/images/toggle-menu.png" class="toggle-menu hide-for-mobile-only" @click="menuActive = !menuActive" alt=""> -->
-            <div class="user text-center p-4">
-                <img src="http://lorempixel.com/200/200/people/" width="150" height="150" alt="" class="user-picture rounded-full border-2 border-white mb-4 block mx-auto">
+            <div class="user text-center p-4" v-if="user">
+                <img src="http://lorempixel.com/200/200/people/" v-if="user.image" width="150" height="150" alt="" class="user-picture rounded-full border-2 border-white mb-4 block mx-auto">
                 <div class="user-info">
-                    <h6 class="font-bold mb-0">Carlos Silva</h6>
-                    <span class="font-thin">UID: 81745</span>
+                    <h6 class="font-bold mb-0">{{ user.first_name }}</h6>
+                    <!-- <span class="font-thin">UID: 81745</span> -->
                 </div>
             </div>
             <nav class="main-nav">
@@ -83,8 +83,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
     name : 'CoinSidebar',
+    computed : {
+        ...mapGetters({ user : 'user' })
+    },
     data() {
         return {
             menuActive : false,

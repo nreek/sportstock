@@ -37,7 +37,7 @@ export default {
         if(!this.token) {
             this.$router.push('/login')
         }else {
-            api.get('user/user').then(res => {
+            api.get('user').then(res => {
                 if(res.message) {
                     this.$router.push('/login')   
                 }else {

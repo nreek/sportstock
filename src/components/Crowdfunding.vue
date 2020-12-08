@@ -7,8 +7,10 @@
             </div>
         </h2>
 
-        <div class="card overflow-hidden h-auto">
-            <div class="player-team p-4 flex items-center justify-between">
+        <div class="card overflow-hidden h-auto" v-if="crowdfunding">
+            <h6 class="px-4 py-2 font-bold my-2">{{ crowdfunding.title }}</h6>
+            <img :src="crowdfunding.banner" alt="" class="mb-2" width="100%">
+            <!-- <div class="player-team p-4 flex items-center justify-between">
                 <div class="text-center">
                     <img src="../assets/images/miranda.png" alt="">
                     <p class="lh-1 mt-3 mb-0">Soccer Player</p>
@@ -20,8 +22,7 @@
                     <p class="lh-1 mt-3 mb-0">Sport Club</p>
                     <p class="font-bold">São Paulo</p>
                 </div>
-
-            </div>
+            </div> -->
 
             <div class="card__footer">
                 <div class="progress-bar mt-3">
@@ -31,15 +32,15 @@
                     <div class="progress" :style="{ 'width': `${progress}%`}"></div>
 
                     <span class="end top">Goal</span>
-                    <div class="end bottom">$23 mm</div>
+                    <div class="end bottom">$ {{ crowdfunding.amount }}</div>
                 </div>
             </div>
 
             <div class="card__footer">
                 <div class="flex items-center fz-21">
                     <img src="../assets/icons/clock.png" alt="" class="mr-3">
-                    <p class="lh-1">End in <span class="text-green mr-3">12:33:21</span></p>
-                    <a href="#" class="btn-border-gradient"><span>Contribute</span></a>
+                    <p class="lh-1">Ends in  <span class="text-green mr-3">{{ formatDate(crowdfunding.end_date) }}</span></p>
+                    <router-link to="trade" class="btn-border-gradient"><span>Contribute</span></router-link>
                 </div>
             </div>
         </div>
@@ -47,15 +48,25 @@
 </template>
 
 <script>
+import api from '@/api'
+import { formatDistance, parse } from 'date-fns'
+
 export default {
     name : 'Crowdfunding',
     data() {
-        return { progress : 0 }
+        return { crowdfunding : false, progress : 0 }
     },
-    mounted () {
+    async mounted () {
+        this.crowdfunding = await api.get('crowdfunding-home')
+
         window.setTimeout(() => {
-            this.progress = 35
+            this.progress =  this.crowdfunding.current_amount * 100 / this.crowdfunding.amount
         }, 1000)
+    },
+    methods : {
+        formatDate(date) {
+            return formatDistance(new Date(), parse(date, 'yyyy-MM-dd', new Date()))
+        }
     }
 }
 </script>
